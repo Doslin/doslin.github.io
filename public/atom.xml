@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://doslin.github.io/"/>
-  <updated>2019-05-22T03:55:39.792Z</updated>
+  <updated>2019-05-22T12:39:59.292Z</updated>
   <id>http://doslin.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>怎么看待.jsp后缀的URL请求越来越少了</title>
+    <link href="http://doslin.github.io/Java/2019/05/22/%E6%80%8E%E4%B9%88%E7%9C%8B%E5%BE%85.jsp%E5%90%8E%E7%BC%80%E7%9A%84URL%E8%AF%B7%E6%B1%82%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%B0%91%E4%BA%86/"/>
+    <id>http://doslin.github.io/Java/2019/05/22/怎么看待.jsp后缀的URL请求越来越少了/</id>
+    <published>2019-05-22T12:18:20.000Z</published>
+    <updated>2019-05-22T12:39:59.292Z</updated>
+    
+    <content type="html"><![CDATA[<p class="description"></p><p><img src="https://" alt style="width:100%"></p><a id="more"></a><h3 id="MVC项目中一般不直接访问-JSP"><a href="#MVC项目中一般不直接访问-JSP" class="headerlink" title="MVC项目中一般不直接访问.JSP"></a>MVC项目中一般不直接访问.JSP</h3><p>今天我同学问我，为什么我的项目的请求的后缀的是jsp ,在MVC的项目中，一般不会直接去访问JSP，都是通过.do来转发，这样做的好处是：</p><ol><li>所有请求都通过action来转发，这样便于整体框架的处理。比如，可以加入登录到某个页面的权限控制，只需要在配置文件中配置，而不用再每个JSP中加入相关的逻辑。</li><li>与数据，文件等底层存储层连接，读取数据的代码可以在类中。这样做，一方面可以将很多方法复用，另一面使JSP页面的代码变得简单而容易维护。</li><li>其实.do也就是MVC当中的C,是控制器。在整个系统中起到中央枢纽的作用。先通过它的话就可以把逻辑代码隐藏在后台，使JSP文件作为单纯的VIEW分离出来，降低了系统的耦合性(比如说regist.do对应的就是regist.jsp这个页面,通过网页可能所有的跳转都是跳到regist.do去注册,但实际上直接输入regist.jsp应该也是可以打开一样的页面去注册，用不着去修改JSP，而是可以配置访问每个action所需要的权限，改动量小)</li></ol><h3 id="怎么看待-jsp后缀的URL请求越来越少了？"><a href="#怎么看待-jsp后缀的URL请求越来越少了？" class="headerlink" title="怎么看待.jsp后缀的URL请求越来越少了？"></a>怎么看待.jsp后缀的URL请求越来越少了？</h3><p>​    谈谈JSP文件。jsp是HTML页面中内嵌的Java代码。</p><h4 id="第一种解释"><a href="#第一种解释" class="headerlink" title="第一种解释"></a>第一种解释</h4><ol><li><p>一个原因是jsp也的确是用的少了。最早jsp是放在tomcat或者jetty这种servlet容器中来用的，jsp会被转换成servlet并且编译成.class文件，但是做routing的时候，默认还是用xxx.jsp来找到这个servlet. 所以以前三大门户时代，我们是经常看到jsp结尾的网站，那时候jsp的性能是非常好的，毕竟有编译嘛。现在我们还经常看到的javabean，其实我最早是在jsp+javabean这个模式中看到的。不过现在新项目已经没人这么干了，有直接用jsp做后台开发的,因为本质上是一个class类,可以方便的调用后台其他类.不过这样违反mvc的开发原则,也不符合前后端分离的开发模式,代码无法维护,最重要的是你需要不时的使用丑陋的&lt;%= &gt;符号标注java部分,最终导致代码无法阅读。  在大前端飞速发展的今天,甚至出现了完全前后端分离的模式,即全部页面都是用ajax请求,后台提供相应的api,所以jsp最终肯定要成为过去式.它只是一个模板。</p></li><li><p>第二个原因是就算用，也不是像早期php那样每个页面做一个jsp，然后里面jdbc直接到数据库了。而是仅仅把jsp作为一个模版语言，当作mvc模式中的view来使用。这样在url上，你是看不出它的view是jsp的。比如说/product/333这样的url, 它只要能找到对应的controller就好，你根本看不出来它的view是用什么技术做的。而且为了简单的SEO优化（早期搜索引擎比较愚蠢），很多都是优先HTML后缀的构建索引。</p></li></ol><h4 id="第二种解释"><a href="#第二种解释" class="headerlink" title="第二种解释"></a>第二种解释</h4><ol><li><p>JSP本身就是一个后端的模板引擎，(jsp文件支持在标准的HTML页面插入Java代码，把Java代码运行的结果映射到HTML页面中，使用编译器编译hello.jsp，编译出的class文件里描述的是一个servlet，这个servlet的任务就是运行插入的Java代码，生成Java代码的结果，插入到HTML页面对应的位置，然后传给输出流。此时输出流里面的数据就和原生的HTML文件一模一样，也因此才能在客户端的浏览器上被识别和运行。这个编译的过程只会在第一次调用该文件的时候执行，之后就不会调用该文件进行编译，而是直接使用编译后的class字节码文件)，只是现在的MVC框架也很少的把页面及后缀暴露在URL上，而是经过一系列的重定向，————通过映射隐藏服务器的真实资源路径是最基本的防黑做法，意思是加入你看到的是<a href="http://link.zhihu.com/?target=http%3A//www.abc.com/index.jsp" target="_blank" rel="noopener">http://www.http://abc.com/index.jsp</a>，这个url，它的index.jsp并不是一定在根目录下，具体的路径是被隐藏起来的，由程序来指定。网页后缀和网页技术没有必然的联系</p></li><li><p>MVC的设计模式，JSP之所以被编译为Servlet，而不直接使用Servlet输出HTML，恰好就是将视图和控制层分离的体现，还有Servlet之所以要编译为Servlet是为了更高的性能，其他的模板引擎也有类似的做法。而不是让你认为他是一个servlet, 。当你写一个jsp页面并运行后,观察下tomcat编译后的文件,会生成相应的*.class,也就说jsp本质上是servlet. 反编译该class文件,你会发现该文件中获取到你的请求,并处理业务逻辑,然后把结果封装为html输出.</p><p>​      所以访问的页面都是发送的请求,而不是静态的xx.jsp文件,拦截器拦截到该请求后调用相应的servlet处理业务逻辑,然后结果被封装为静态文件xx.html输出.  而输出的页面怎么写呢?很麻烦吧?所以jsp的作用就是使用一个模板,用特殊占位符(比如jstl)来站位并控制简单逻辑,后台servlet处理完业务逻辑会按照相应的jsp模板替换为xx.html输出.   </p><p>​     当然也有直接用jsp做后台开发的,因为本质上是一个class类,可以方便的调用后台其他类.不过这样违反mvc的开发原则,也不符合前后端分离的开发模式,代码无法维护,最重要的是你需要不时的使用丑陋的&lt;%= &gt;符号标注java部分,最终导致代码无法阅读.</p><p>​    当使用框架之后,可以方便的控制请求后缀,java中一般使用 <a href="https://link.zhihu.com/?target=http%3A//xx.do/" target="_blank" rel="noopener">xx.do</a>  xx.action  xx.html  xx等,没有特殊的意思,只是为了使拦截器方便的区分静态文件(<em>.css </em>.js等)与请求.</p><p>​    jsp最为一种古老的技术,个人开发中感觉已经很少了.比如现在的jfinal开发框架直接使用html模板,使用自定义的标签,方便快速. </p><p>​    在大前端飞速发展的今天,甚至出现了完全前后端分离的模式,即全部页面都是用ajax请求,后台提供相应的api,所以jsp最终肯定要成为过去式.它只是一个模板.</p></li></ol><p>附加知识评论：</p><figure class="highlight java"><figcaption><span>来自知乎</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">JSP文件支持在标准的HTML页面中插入Java代码，那么插入这些代码有什么用呢？刚学习JSP的人往往可以脱口而出，就是把Java代码运行的结果映射到HTML页面中，从而实现从服务器向客户端传值(当然不可能只是传值的功能)，但是，比如当我们输入xxx.jsp的时候，为什么浏览器端拿到的数据里，只有HTML页面和一些值，却没有拿到原本的Java代码呢(也就是说拿到的并不是原JSP文件)</span><br><span class="line"></span><br><span class="line">这个现象正好说明了：<span class="string">"文件"</span>和<span class="string">"资源"</span>不是一个概念。<span class="string">"资源"</span>只是一个标识，服务器拿到标识后，会经过一系列的转换，映射到某一种操作上去。有时候，这个操作是获取一个静态文件，原封不动的传入输出流，经过HTTP协议的封装后传到客户端；有时候，这个操作是让服务器进行计算，然后动态的生成数据到输出流中，在经过HTTP协议封装—而这里动态生成的数据，有的看起来也是一个静态文件，有的看起来则五花八门。</span><br></pre></td></tr></table></figure><hr>]]></content>
+    
+    <summary type="html">
+    
+      怎么看待.jsp后缀的URL请求越来越少了?
+    
+    </summary>
+    
+      <category term="Java" scheme="http://doslin.github.io/categories/Java/"/>
+    
+    
+      <category term="Chat" scheme="http://doslin.github.io/tags/Chat/"/>
+    
+  </entry>
   
   <entry>
     <title>HEXO下的Markdown语法(GFM)写博客</title>
