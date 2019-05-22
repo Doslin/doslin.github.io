@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="装饰器模式入门">
+<meta name="keywords" content="Design-Patterns">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design-Patterns-Decorator">
+<meta property="og:url" content="http://doslin.github.io/Good-Quality-Code/2019/04/28/Design-Patterns-Decorator/index.html">
+<meta property="og:site_name" content="沉稳">
+<meta property="og:description" content="装饰器模式入门">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:///">
+<meta property="og:image" content="http://img.takeing.cn/qiuzhilin/20190428/jS4kRM6MD3mj.png">
+<meta property="og:image" content="http://img.takeing.cn/qiuzhilin/20190428/bAMhyWdqp007.png">
+<meta property="og:image" content="http://img.takeing.cn/qiuzhilin/20190428/rFQY6IGxMPct.png">
+<meta property="og:image" content="http://img.takeing.cn/qiuzhilin/20190428/KEe7SzqTrzKb.png">
+<meta property="og:image" content="http://img.takeing.cn/qiuzhilin/20190428/hytVTxjKfqwH.png">
+<meta property="og:image" content="http://img.takeing.cn/qiuzhilin/20190428/C9cLVAD1u1BA.png">
+<meta property="og:image" content="http://img.takeing.cn/qiuzhilin/20190428/SOP9N7wxgAAC.png">
+<meta property="og:image" content="http://img.takeing.cn/qiuzhilin/20190428/B3Ieav5ixwOi.png">
+<meta property="og:updated_time" content="2019-05-06T14:39:01.481Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Design-Patterns-Decorator">
+<meta name="twitter:description" content="装饰器模式入门">
+<meta name="twitter:image" content="https:///">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="沉稳" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://doslin.github.io/Good-Quality-Code/2019/04/28/Design-Patterns-Decorator/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Design-Patterns-Decorator | 沉稳</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+<script type="text/javascript" src="/js/dytitle.js"></script>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">沉稳</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">务实</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="https://res.cloudinary.com/dvu6persj/image/upload/v1554823311/%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88_%E6%A0%A1%E6%8B%9B_%E9%82%B1%E5%BF%97%E6%9E%97-15679977727.pdf" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>简历</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://doslin.github.io/Good-Quality-Code/2019/04/28/Design-Patterns-Decorator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="沉稳">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="沉稳">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Design-Patterns-Decorator
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar"></i>
+              </span>
+
+
+
+
+              
+                
+              
+
+              <time title="创建：2019-04-28 23:26:15" itemprop="dateCreated datePublished" datetime="2019-04-28T23:26:15+08:00">2019-04-28</time>
+            
+
+
+
+
+            
+			
+	
+			
+			
+			
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">•</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-th"></i>
+              </span>
+              
+              
+		
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Good-Quality-Code/" itemprop="url" rel="index"><span itemprop="name">Good-Quality-Code</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">•</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comments"></i>
+                </span>
+            
+                
+                <a href="/Good-Quality-Code/2019/04/28/Design-Patterns-Decorator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/Good-Quality-Code/2019/04/28/Design-Patterns-Decorator/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/Good-Quality-Code/2019/04/28/Design-Patterns-Decorator/" class="leancloud_visitors" data-flag-title="Design-Patterns-Decorator">
+              <span class="post-meta-divider">•</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+			  
+              
+              
+		
+				
+                <span class="leancloud-visitors-count"></span>
+            </span>
+           
+
+          
+
+          
+            <span class="post-symbolscount">
+              
+
+              
+              
+              	
+                	<span class="post-meta-divider">•</span>
+              			
+
+		  <span class="post-meta-item-icon">
+                  <i class="fa fa-pencil-square"></i>
+                </span>
+                
+               
+                
+                <span title="本文字数">8.2k</span>
+              
+
+             
+
+              
+               
+          
+
+          
+            <div class="post-description">装饰器模式入门</div>
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p class="description"></p>
+
+<p><img src="https://" alt style="width:100%"></p>
+<a id="more"></a>
+<h3 id="课程概述"><a href="#课程概述" class="headerlink" title="课程概述"></a>课程概述</h3><p>装饰器模式动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。</p>
+<p>某一天隔壁老王赤果果地来到百货商店，打算给自己买一套装备，武装到牙齿。他买了衣服、裤子和帽子，于是老王这样做：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LaoWang</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"我穿上衣服，累计花费100元"</span>);</span><br><span class="line">        System.out.println(<span class="string">"我穿上裤子，累计花费250元"</span>);</span><br><span class="line">        System.out.println(<span class="string">"我穿上帽子，花费300元"</span>);</span><br><span class="line">        <span class="comment">//........</span></span><br><span class="line">        <span class="comment">//........</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但老王很快发现了问题，每买一件装备都要修改一次 show() 方法，违背了开闭原则。在前面的内容中已经解释过开闭原则：对扩展开放、对修改关闭。每增加一件装备都相当于扩展了一个功能，我们不应该用修改原方法的方式来扩展功能。</p>
+<p>机智的老王学过设计模式，很快就想到了使用装饰器模式，装饰器模式动态地把功能附加到对象上。</p>
+<p>装饰器模式类图：</p>
+<p><img src="http://img.takeing.cn/qiuzhilin/20190428/jS4kRM6MD3mj.png" alt="mark"></p>
+<p>观察上图，装饰器模式中主要有两个角色：</p>
+<ul>
+<li>装饰器；</li>
+<li>被装饰的对象。</li>
+</ul>
+<p>用老王买装备的例子来说，老王就是被装饰的对象，而衣服、裤子、帽子等就是装饰器。</p>
+<p>装饰器和被装饰的对象有两个特点，也是装饰器模式的关键：</p>
+<ul>
+<li>他们实现同一个接口；</li>
+<li>装饰器中使用了被装饰的对象。</li>
+</ul>
+<p>下面我们来简单地实现上面的例子。</p>
+<p>老王（ 被装饰的对象 ）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算累计消费</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Double <span class="title">cost</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LaoWang</span> <span class="keyword">implements</span> <span class="title">Person</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Double <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0.0</span>; <span class="comment">//赤果果的时候累计消费为0</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"我是赤果果的老王"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>装饰器超类，和被装饰的对象实现同一个接口 Person ：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ClothesDecorator</span> <span class="keyword">implements</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="comment">//装饰器中要使用被装饰器的对象，构造方法中传入</span></span><br><span class="line">    <span class="keyword">protected</span> Person person;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ClothesDecorator</span><span class="params">(Person person)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.person = person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体的装饰，夹克和帽子：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Jacket</span> <span class="keyword">extends</span> <span class="title">ClothesDecorator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    public <span class="type">Jacket</span>(<span class="type">Person</span> person) &#123;</span><br><span class="line">        <span class="keyword">super</span>(person);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    public void show() &#123;</span><br><span class="line">        person.show();</span><br><span class="line">        <span class="type">System</span>.out.println(<span class="string">"穿上夹克，累计消费"</span> + <span class="keyword">this</span>.cost());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    public <span class="type">Double</span> cost() &#123;</span><br><span class="line">        <span class="keyword">return</span> person.cost() + <span class="number">100</span>; <span class="comment">//夹克100元</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Hat</span> <span class="keyword">extends</span> <span class="title">ClothesDecorator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    public <span class="type">Hat</span>(<span class="type">Person</span> person) &#123;</span><br><span class="line">        <span class="keyword">super</span>(person);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    public void show() &#123;</span><br><span class="line">        <span class="comment">//执行已有功能</span></span><br><span class="line">        person.show();</span><br><span class="line">        <span class="comment">//此处是附加的功能</span></span><br><span class="line">        <span class="type">System</span>.out.println(<span class="string">"戴上帽子，累计消费"</span> + <span class="keyword">this</span>.cost());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    public <span class="type">Double</span> cost() &#123;</span><br><span class="line">        <span class="keyword">return</span> person.cost() + <span class="number">50</span>; <span class="comment">//帽子50元</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Person laowang = <span class="keyword">new</span> <span class="type">LaoWang</span>();</span><br><span class="line"><span class="comment">//穿上夹克</span></span><br><span class="line">laowang = <span class="keyword">new</span> <span class="type">Jacket</span>(laowang);</span><br><span class="line"><span class="comment">//戴上帽子</span></span><br><span class="line">laowang = <span class="keyword">new</span> <span class="type">Hat</span>(laowang);</span><br><span class="line"></span><br><span class="line">laowang.show();</span><br><span class="line">System.out.println(<span class="string">"买单，老王总共消费："</span>+laowang.cost());</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="http://img.takeing.cn/qiuzhilin/20190428/bAMhyWdqp007.png" alt="mark"></p>
+<p>用了装饰器模式，老王还想穿裤子、鞋子，只要分别创建裤子、鞋子的装饰类就可以动态地穿上了，而不用修改已写好的类，深入贯彻落实了开闭原则。</p>
+<p>使用装饰器模式的几个关键点：</p>
+<ul>
+<li><strong>装饰器</strong>和<strong>被装饰类</strong>要实现同一个接口（ 实际开发中也可能用继承 ）。</li>
+<li>装饰器中的方法可以调用被装饰对象提供的方法，以此实现功能累加的效果，例如，夹克装饰器和帽子装饰器中调用了 <code>person.cost() + xx</code> 实现累计消费金额的累加。</li>
+</ul>
+<h3 id="实际案例"><a href="#实际案例" class="headerlink" title="实际案例"></a>实际案例</h3><h4 id="Java-中的-IO-流"><a href="#Java-中的-IO-流" class="headerlink" title="Java 中的 IO 流"></a>Java 中的 IO 流</h4><p>在学习 Java 基础的过程中，学习 IO 流是必不可少的，同时这也是最令人头疼。我们先来简单地写一下 IO 流的应用。</p>
+<p>先准备一个文本文件：</p>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello world!</span><br><span class="line">I am laowang</span><br></pre></td></tr></table></figure>
+<p>用输入流读取内容：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DataInputStream in = <span class="keyword">new</span> DataInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"test.txt"</span>));</span><br><span class="line">String str;</span><br><span class="line"><span class="keyword">while</span>((str =  in.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">    System.out.println(str);</span><br><span class="line">&#125;</span><br><span class="line">in.close();</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<p><img src="http://img.takeing.cn/qiuzhilin/20190428/rFQY6IGxMPct.png" alt="mark"></p>
+<p>笔者刚入门 Java 的时候，学到上面的代码，其实还算简单，但后来又了解到还有 BufferedInputStream 、StringBufferInputStream 等等。许多 InputStream 子类互相嵌套，除了输入流，还有输出流 OutputStream ，以及各种字符流 Writter 和 Reader ，庞大的 IO 流家族简直令人崩溃。</p>
+<p>后来看了下 IO 流的族谱，总算对此有了个大概的了解：</p>
+<p><img src="http://img.takeing.cn/qiuzhilin/20190428/KEe7SzqTrzKb.png" alt="enter image description here"></p>
+<p>上图是 InputStream 家族，OutputStream 也是类似。通过上图，对整体结构清晰了不少，但是对 new DataInputStream(new FileInputStream(“test.txt”)); 这种调用方式还是一知半解，不明白为什么这样嵌套？到底谁嵌套谁？</p>
+<p>直到学习了装饰器模式，赫然发现 IO 家族族谱怎么长得这么像装饰器模式的类图？不妨回到本课程开头将装饰器类图和 InputStream 族类图对比一下，你会发现 InputStream 类其实就是被装饰对象的超类，FileInputStream 、StringBufferInputStream 等就是要被装饰的对象，FilterInputStream 以及其子类就是装饰器。</p>
+<p><img src="http://img.takeing.cn/qiuzhilin/20190428/hytVTxjKfqwH.png" alt="enter image description here"></p>
+<p>回顾老王穿衣服的代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Person laowang = <span class="keyword">new</span> <span class="type">LaoWang</span>();</span><br><span class="line"><span class="comment">//穿上夹克</span></span><br><span class="line">laowang = <span class="keyword">new</span> <span class="type">Jacket</span>(laowang);</span><br></pre></td></tr></table></figure>
+<p>换种写法：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person laowang = <span class="keyword">new</span> <span class="type">Jacket</span>(<span class="keyword">new</span> <span class="type">LaoWang</span>());</span><br></pre></td></tr></table></figure>
+<p>是不是和 new DataInputStream(new FileInputStream(“test.txt”)); 一模一样？</p>
+<p>学到这里，有种豁然开朗的感觉，原来 IO 流根本不难，只要了解其家族成员，谁嵌套谁的问题也就迎刃而解。</p>
+<p>根据装饰器模式，我们来自定义一个装饰器，将所有英文字母转换为空格：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">CharacterInputStream</span> <span class="keyword">extends</span> <span class="title">FilterInputStream</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    public <span class="type">CharacterInputStream</span>(<span class="type">InputStream</span> in) &#123;</span><br><span class="line">        <span class="keyword">super</span>(in);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    public int read() <span class="keyword">throws</span> <span class="type">IOException</span> &#123;</span><br><span class="line">        <span class="comment">//ASCLL码对照,[97,122] 和 [65,90]是英文字母</span></span><br><span class="line">        int c = <span class="keyword">super</span>.read();</span><br><span class="line">        <span class="keyword">if</span>(c &gt;= <span class="number">97</span> &amp;&amp; c &lt;= <span class="number">122</span> || c &gt;= <span class="number">65</span> &amp;&amp; c &lt;= <span class="number">90</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">32</span>; <span class="comment">//32是空格</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> c;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试，准备一个文本：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hello/world!</span><br><span class="line">I am*&amp;^ laowang*<span class="number">632</span></span><br><span class="line">DataInputStream <span class="keyword">in</span> = <span class="keyword">new</span> <span class="type">DataInputStream</span>(</span><br><span class="line">                        <span class="keyword">new</span> <span class="type">CharacterInputStream</span>(</span><br><span class="line">                           <span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"test.txt"</span>)));</span><br><span class="line"></span><br><span class="line"><span class="keyword">String</span> str;</span><br><span class="line"><span class="keyword">while</span>((str =  <span class="keyword">in</span>.readLine()) != <span class="literal">null</span>)&#123;</span><br><span class="line">    System.out.println(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<p><img src="http://img.takeing.cn/qiuzhilin/20190428/C9cLVAD1u1BA.png" alt="enter image description here"></p>
+<p>文本中的英文字母成功地被转换成了空格。</p>
+<p>IO 家族中的输出流、字符输入输出流等都是同样的道理，此处不再详述。</p>
+<h4 id="JSON-格式化日志"><a href="#JSON-格式化日志" class="headerlink" title="JSON 格式化日志"></a>JSON 格式化日志</h4><p>打印日志是开发中最常做的事，是调试 bug 最重要的手段之一。</p>
+<p>有一天隔壁老王公司的系统出了个问题，老王查看日志时，其中有一段业务日志是一个 JSON 字符串，内容是用户银行卡数据：</p>
+<p><img src="http://img.takeing.cn/qiuzhilin/20190428/SOP9N7wxgAAC.png" alt="enter image description here"></p>
+<p>老王发现大量的 JSON 日志堆积在一起时，很难用肉眼快速筛选中自己想要的数据。怎么办？</p>
+<p>难道每次都要把日志内容复制出来用工具转换一下吗？太麻烦了。于是老王就想如果打印日志的时候能够自动将 JSON 格式的日志格式化显示就好了。</p>
+<p>可是老王用的是 Apache 的 Log4j 打印日志，不可能去改源码，咋整？经验丰富的老王想到了装饰器模式，动态地给日志增加功能。</p>
+<p>首先我们需要一个将 JSON 字符串格式化的工具类，下方格式化 JSON 的具体代码逻辑可以不看，与装饰器模式本身无关，笔者也是直接从网上复制来的。</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.qiuzhilin.design.decorator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class Json &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">String</span> getLevelStr(<span class="built_in">int</span> level) &#123;</span><br><span class="line">        StringBuffer levelStr = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> levelI = <span class="number">0</span>; levelI &lt; level; levelI++) &#123;</span><br><span class="line">            levelStr.<span class="built_in">append</span>(<span class="string">"\t"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> levelStr.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> format(<span class="keyword">String</span> s)&#123;</span><br><span class="line">        <span class="built_in">int</span> level = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//存放格式化的json字符串</span></span><br><span class="line">        StringBuffer jsonForMatStr = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> index=<span class="number">0</span>;index&lt;s.length();index++)<span class="comment">//将字符串中的字符逐个按行输出</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//获取s中的每个字符</span></span><br><span class="line">            <span class="built_in">char</span> c = s.charAt(index);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//level大于0并且jsonForMatStr中的最后一个字符为\n,jsonForMatStr加入\t</span></span><br><span class="line">            <span class="keyword">if</span> (level &gt; <span class="number">0</span> &amp;&amp; <span class="string">'\n'</span> == jsonForMatStr.charAt(jsonForMatStr.length() - <span class="number">1</span>)) &#123;</span><br><span class="line">                jsonForMatStr.<span class="built_in">append</span>(getLevelStr(level));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//遇到"&#123;"和"["要增加空格和换行，遇到"&#125;"和"]"要减少空格，以对应，遇到","要换行</span></span><br><span class="line">            <span class="keyword">switch</span> (c) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'&#123;'</span>:</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'['</span>:</span><br><span class="line">                    jsonForMatStr.<span class="built_in">append</span>(c + <span class="string">"\n"</span>);</span><br><span class="line">                    level++;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">','</span>:</span><br><span class="line">                    jsonForMatStr.<span class="built_in">append</span>(c + <span class="string">"\n"</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'&#125;'</span>:</span><br><span class="line">                <span class="keyword">case</span> <span class="string">']'</span>:</span><br><span class="line">                    jsonForMatStr.<span class="built_in">append</span>(<span class="string">"\n"</span>);</span><br><span class="line">                    level--;</span><br><span class="line">                    jsonForMatStr.<span class="built_in">append</span>(getLevelStr(level));</span><br><span class="line">                    jsonForMatStr.<span class="built_in">append</span>(c);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    jsonForMatStr.<span class="built_in">append</span>(c);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> jsonForMatStr.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重点是装饰类：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.qiuzhilin.design.decorator;</span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.<span class="type">Logger</span>;</span><br><span class="line"></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">JsonFormatLoggerDecorator</span> <span class="keyword">extends</span> <span class="title">Logger</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> static <span class="type">Logger</span> logger;</span><br><span class="line"></span><br><span class="line">    public <span class="type">JsonFormatLoggerDecorator</span>(<span class="type">Logger</span> logger)&#123;</span><br><span class="line">        <span class="keyword">super</span>(<span class="type">JsonFormatLoggerDecorator</span>.<span class="keyword">class</span>.getName());</span><br><span class="line">        <span class="type">JsonFormatLoggerDecorator</span>.logger = logger;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    public void error(<span class="type">Object</span> message) &#123;</span><br><span class="line">        <span class="keyword">if</span>(message instanceof <span class="type">String</span>)&#123; <span class="comment">//严格来说这里要判断是否是json格式</span></span><br><span class="line">            logger.error(<span class="string">"\n"</span>+<span class="type">Json</span>.format((<span class="type">String</span>)message));</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            logger.error(message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>把装饰的过程写到工厂类中：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.qiuzhilin.design.decorator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.LogManager;</span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.Logger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLoggerFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Logger getLogger(<span class="keyword">String</span> name)&#123;</span><br><span class="line">        <span class="comment">//此处可以进行多层装饰，给日志增加多个功能</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="type">JsonFormatLoggerDecorator</span>(LogManager.getLogger(name));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String str= <span class="string">" &#123;<span class="subst">\"</span>code<span class="subst">\"</span>: 0, <span class="subst">\"</span>data<span class="subst">\"</span>: &#123;<span class="subst">\"</span>status<span class="subst">\"</span>: 1,<span class="subst">\"</span>number<span class="subst">\"</span>: <span class="subst">\"</span>215646454<span class="subst">\"</span>,<span class="subst">\"</span>account_name<span class="subst">\"</span>: <span class="subst">\"</span>吴系挂<span class="subst">\"</span>,<span class="subst">\"</span>type<span class="subst">\"</span>:<span class="subst">\"</span>中国银行<span class="subst">\"</span> ,<span class="subst">\"</span>address<span class="subst">\"</span>: <span class="subst">\"</span>某某支行<span class="subst">\"</span>,<span class="subst">\"</span>icon<span class="subst">\"</span>: <span class="subst">\"</span>http://xxx.xxx.xx<span class="subst">\"</span>&#125;&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//此处可以写成类静态变量</span></span><br><span class="line">Logger logger = MyLoggerFactory.getLogger(Demo.class.getName());</span><br><span class="line"><span class="comment">//实际开发时，可以传入对象，在装饰类中将对象转换成json字符串。此处只是测试所以直接传入json字符串</span></span><br><span class="line">logger.error(str);</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="http://img.takeing.cn/qiuzhilin/20190428/B3Ieav5ixwOi.png" alt="enter image description here"></p>
+<p>除了格式化 JSON，将来老王还能随心所欲地给日志附加其他功能，例如老王觉得日志挤在一起看起来很不舒服，想要给每一条日志都加一行空行，只要写一个装饰类，然后在 MyLoggerFactory 进行装饰即可。</p>
+<h3 id="课程总结"><a href="#课程总结" class="headerlink" title="课程总结"></a>课程总结</h3><p>装饰器模式的作用是动态给对象增加一些功能，而不需要修改对象本身。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>扩展功能的方式比较灵活；</li>
+<li>每一个装饰器相互独立，需要修改时不会互相影响。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>多层装饰比较复杂，就像 Java 的 IO 流，对于初学者不友好。</p>
+<hr>
+
+      
+    </div>
+
+
+<div>
+
+
+     
+
+
+
+     <div class="updated"><svg xmlns="http://www.w3.org/2000/svg" width="130" height="20">
+    <lineargradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/></lineargradient><clippath id="a">
+    <rect width="130" height="20" rx="3" fill="#fff"/></clippath><g clip-path="url(#a)">
+    <path fill="#555" d="M0 0h55v20H0z"/><path fill="#97CA00" d="M55 0h75v20H55z"/>
+    <path fill="url(#b)" d="M0 0h130v20H0z"/></g>
+ <g fill="#fff" text-anchor="middle" font-family="Menlo,monospace" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textlength="450" transform="scale(.1)">updated</text><text x="285" y="140" textlength="450" transform="scale(.1)">updated</text>
+ <text x="915" y="150" fill="#010101" fill-opacity=".3" textlength="650" transform="scale(.1)">
+
+  
+               2019-05-06
+              </text>
+ <text x="915" y="140" textlength="650" transform="scale(.1)"> 2019-05-06</text></g></svg></div>
+
+
+                 
+             
+              
+              
+            
+
+
+       
+<div>
+
+   
+   
+  
+
+<div class="post-body" style="opacity: 1; display: block;"><div><div style="text-align:center;font-size:13px;letter-spacing:10px;user-select:none;margin-top:20px;color:#bbb">本文结束啦<i class="fa fa-star"></i>感谢您阅读</div></div></div><div class="post-body" style="opacity: 1; display: block;">		
+	
+	
+	
+</div>
+
+     
+   </div>
+
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Design-Patterns/" rel="tag"># Design-Patterns</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+         
+    <div style="color: rgba(0, 0, 0, 0.75); font-size:13px; letter-spacing:3px">(&gt;看完记得五星好评哦亲&lt;)</div>
+
+   
+	 <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Java/2019/05/06/Mac_Install_Maven/" rel="prev" title="Mac_Install_Maven">
+                <i class="fa fa-chevron-left"></i> Mac_Install_Maven
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Good-Quality-Code/2019/04/27/Design-Patterns-Strategy/" rel="next" title="Design-Patterns-Strategy">
+                Design-Patterns-Strategy <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </div></article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+		<a href="/">
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="沉稳">
+            </a>
+		
+		
+              <p class="site-author-name" itemprop="name">沉稳</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/doslin" title="GitHub &rarr; https://github.com/doslin" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                链接在作弊
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://coldplay.com/" title="http://coldplay.com/" rel="noopener" target="_blank">Coldplay Official Website</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://elonmusknews.org/" title="https://elonmusknews.org/" rel="noopener" target="_blank">获取 Elon Musk 的新闻</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://res.cloudinary.com/dvu6persj/image/upload/v1554823311/%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88_%E6%A0%A1%E6%8B%9B_%E9%82%B1%E5%BF%97%E6%9E%97-15679977727.pdf" title="https://res.cloudinary.com/dvu6persj/image/upload/v1554823311/%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88_%E6%A0%A1%E6%8B%9B_%E9%82%B1%E5%BF%97%E6%9E%97-15679977727.pdf" rel="noopener" target="_blank">关于此博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          <div id="days"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("03/27/2019 15:13:14");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#课程概述"><span class="nav-number">1.</span> <span class="nav-text">课程概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实际案例"><span class="nav-number">2.</span> <span class="nav-text">实际案例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-中的-IO-流"><span class="nav-number">2.1.</span> <span class="nav-text">Java 中的 IO 流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON-格式化日志"><span class="nav-number">2.2.</span> <span class="nav-text">JSON 格式化日志</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#课程总结"><span class="nav-number">3.</span> <span class="nav-text">课程总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">3.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沉稳</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">69k</span>
+  
+  
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="weixin-box">
+  <div class="weixin-menu">
+    <div class="weixin-hover">
+      <div class="weixin-description">微信扫一扫，订阅本博客</div>
+    </div>
+  </div>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'AWtUeM97t5zIKdppnTVfJMXm-gzGzoHsz',
+    appKey: 'KWfBrPC5uJJsh8tmVvq3Wvji',
+    placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！~',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+    <!-- LOCAL: You can save these files to your site and update links -->
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
+<!-- END LOCAL -->
+
+<script>
+  function renderGitment() {
+    var gitment = new Gitmint({
+      id: window.location.pathname,
+      owner: 'doslin',
+      repo: 'doslin.github.io',
+      
+        lang: '' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+      
+      oauth: {
+      
+      
+        client_secret: 'd85c0de18428623802b0cfca2195df855946bf2f',
+      
+        client_id: 'f05ccbf74732d0d2ade2'
+      }
+    });
+    gitment.render('gitment-container');
+  }
+
+  
+    renderGitment();
+  
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'AWtUeM97t5zIKdppnTVfJMXm-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'AWtUeM97t5zIKdppnTVfJMXm-gzGzoHsz',
+                'X-LC-Key': 'KWfBrPC5uJJsh8tmVvq3Wvji',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 17922,
+      el: 'wpac-rating',
+      color: 'f79533'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("AWtUeM97t5zIKdppnTVfJMXm-gzGzoHsz", "KWfBrPC5uJJsh8tmVvq3Wvji");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+  <script>
+  $("body").backstretch("https://res.cloudinary.com/dvu6persj/image/upload/v1554796120/background.jpg");
+  </script>
+
+</body>
+</html>

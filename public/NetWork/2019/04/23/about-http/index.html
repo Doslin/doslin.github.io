@@ -1,0 +1,2065 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="是时侯知道HTTP全家桶了">
+<meta name="keywords" content="HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="about_http">
+<meta property="og:url" content="http://doslin.github.io/NetWork/2019/04/23/about-http/index.html">
+<meta property="og:site_name" content="沉稳">
+<meta property="og:description" content="是时侯知道HTTP全家桶了">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:///">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032058/Blog/http/http%E7%9A%84%E5%8F%91%E5%B1%95.png">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032112/Blog/http/http1%E5%92%8Chttp2%E7%9A%84%E7%AE%80%E5%8D%95%E6%AF%94%E8%BE%83.png">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032289/Blog/http/Image_3.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032315/Blog/http/Image_4.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032396/Blog/http/http%E5%8D%8F%E8%AE%AE%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032447/Blog/http/http_url.png">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032481/Blog/http/http-form-data.png">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032587/Blog/http/http-form-data-2.png">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032651/Blog/http/http-form-data-raw.png">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032707/Blog/http/http-header.png">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032772/Blog/http/http-cache.png">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032829/Blog/http/http-cookie-session.png">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032888/Blog/http/HTTP-vs-HTTPS.png">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556032942/Blog/http/tcp-three_times_hands.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556033005/Blog/http/http-tcp_2.png">
+<meta property="og:image" content="https://res.cloudinary.com/dvu6persj/image/upload/v1556033082/Blog/http/https.jpg">
+<meta property="og:updated_time" content="2019-05-06T14:39:01.484Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about_http">
+<meta name="twitter:description" content="是时侯知道HTTP全家桶了">
+<meta name="twitter:image" content="https:///">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="沉稳" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://doslin.github.io/NetWork/2019/04/23/about-http/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>about_http | 沉稳</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+<script type="text/javascript" src="/js/dytitle.js"></script>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">沉稳</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">务实</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="https://res.cloudinary.com/dvu6persj/image/upload/v1554823311/%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88_%E6%A0%A1%E6%8B%9B_%E9%82%B1%E5%BF%97%E6%9E%97-15679977727.pdf" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>简历</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://doslin.github.io/NetWork/2019/04/23/about-http/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="沉稳">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="沉稳">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">about_http
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar"></i>
+              </span>
+
+
+
+
+              
+                
+              
+
+              <time title="创建：2019-04-23 22:49:21" itemprop="dateCreated datePublished" datetime="2019-04-23T22:49:21+08:00">2019-04-23</time>
+            
+
+
+
+
+            
+			
+	
+			
+			
+			
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">•</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-th"></i>
+              </span>
+              
+              
+		
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NetWork/" itemprop="url" rel="index"><span itemprop="name">NetWork</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">•</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comments"></i>
+                </span>
+            
+                
+                <a href="/NetWork/2019/04/23/about-http/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/NetWork/2019/04/23/about-http/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/NetWork/2019/04/23/about-http/" class="leancloud_visitors" data-flag-title="about_http">
+              <span class="post-meta-divider">•</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+			  
+              
+              
+		
+				
+                <span class="leancloud-visitors-count"></span>
+            </span>
+           
+
+          
+
+          
+            <span class="post-symbolscount">
+              
+
+              
+              
+              	
+                	<span class="post-meta-divider">•</span>
+              			
+
+		  <span class="post-meta-item-icon">
+                  <i class="fa fa-pencil-square"></i>
+                </span>
+                
+               
+                
+                <span title="本文字数">15k</span>
+              
+
+             
+
+              
+               
+          
+
+          
+            <div class="post-description">是时侯知道HTTP全家桶了</div>
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p class="description"></p>
+
+<p><img src="https://" alt style="width:100%"></p>
+<a id="more"></a>
+<h4 id="什么是-HTTP-协议"><a href="#什么是-HTTP-协议" class="headerlink" title="什么是 HTTP 协议"></a>什么是 HTTP 协议</h4><p>首先我们来看协议是什么？协议是指计算机通信网络中两台计算机之间进行通信所必须共同遵守有规则的文本格式。一但有了协议，就可以使很多公司分工起来，有些公司做 Server 端，如 Tomcat，而有些公司就可以做浏览器了。这样大家只要一套约定，彼此的通讯就会相互兼容。</p>
+<p>接下来我们看什么是 HTTP？HTTP 是基于 TCP/IP 的应用层通信协议，它是客户端和服务器之间相互通信的标准。它规定了如何在互联网上请求和传输内容。通过应用层协议，我的意思是，它只是一个规范了主机（客户端和服务器）如何通信的抽象层，并且它本身依赖于 TCP/IP 来获取客户端和服务器之间的请求和响应。默认的 TCP 端口是80端口，当然，使用其他端口也是可以的。然而，HTTPS 使用的端口是443端口。</p>
+<h4 id="HTTP-协议的简单历史"><a href="#HTTP-协议的简单历史" class="headerlink" title="HTTP 协议的简单历史"></a>HTTP 协议的简单历史</h4><p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032058/Blog/http/http%E7%9A%84%E5%8F%91%E5%B1%95.png" alt="http åè®®åå²"></p>
+<p><strong>第一阶段，1996年之前。</strong>第一版的 HTTP 文档是1991年提出来的 HTTP/0.9，其主要特点有：（1）它仅有一个 GET 方法。（2）没有 header 数据块。（3）必须以HTML格式响应。</p>
+<p><strong>第二阶段，HTTP/1.0 - 1996。</strong>HTML 格式响应，HTTP/1.0 能够处理其他的响应格式，例如：图像、视频文件、纯文本或其他任何的内容类型（Content-Type 来区分）。它增加了更多的方法（即 POST 和 HEAD），请求/响应的格式也发生了改变，请求和响应中均加入了 HTTP 头信息，响应数据还增加了状态码标识，还介绍了字符集的支持、多部分发送、权限、缓存、内容编码等很多内容。HTTP/1.0 的主要缺点之一是，你不能在每个连接中发送多个请求。也就是说，每当客户端要向服务器端请求东西时，它都会打开一个新的 TCP 连接，并且在这个单独请求完成后，该连接就会被关闭。每一次连接里面都包含了著名的三次握手协议。于是有些 HTTP/1.0 的实现试图通过引入一个新的头信息 Connection: keep-alive，来解决这个问题。</p>
+<p><strong>第三个阶段，HTTP/1.1 - 1999。</strong>HTTP/1.0 发布之后，随着 HTTP 开始普及之后，它的缺点也开始展现。时隔三年，HTTP/1.1 便在1999年问世，它在之前的基础上做了很多的改进。主要内容包含：</p>
+<ul>
+<li>新增的 HTTP 方法有 PUT、PATCH、HEAD、OPTIONS、DELETE。</li>
+<li>主机名标识。在 HTTP/1.0 中，Host 头信息不是必须项，但 HTTP/1.1 中要求必须要有 Host 头信息。</li>
+<li>持久性连接。正如前面所说，在 HTTP/1.0 中每个连接只有一个请求，且在这个请求完成后该连接就会被关闭，从而会导致严重的性能下降及延迟问题。HTTP/1.1 引入了对持久性连接的支持，例如：默认情况下连接不会被关闭，在多个连续的请求下它会保存连接的打开状态。想要关闭这些连接，需要将 Connection: close 加入到请求的头信息中。客户端通常会在最后一次请求中发送这个头信息用来安全的关闭连接。</li>
+<li>管道机制。HTTP/1.1 也引入了对管道机制的支持，客户端可以向服务器发送多个请求，而无需等待来自同一连接上的服务器响应，并且当收到请求时服务器必须以相同的顺序来响应。但你可能会问客户端是怎么知道第一个响应下载完成和下一个响应内容开始的？要解决这个问题，必须要有 Content-Length 头信息，客户端可以用它来确定响应结束，然后开始等待下一个响应。</li>
+</ul>
+<p><strong>第四个阶段，SPDY - 2009。</strong>Google 走在前面，它开始试验一种可替换的协议来减少网页的延迟，使得网页加载更快、提升 Web 安全性。2009年，他们称这种协议为 SPDY。SPDY 的功能包含多路复用、压缩、优先级、安全等。2015年，谷歌不想存在两个相互竞争的标准，因此他们决定把它合并到 HTTP 中成为 HTTP/2，同时放弃 SPDY。</p>
+<p><strong>第五个阶段，HTTP/2 - 2015。</strong>HTTP/2 是专为低延迟传输的内容而设计。关键特征或与 HTTP / 1.1 旧版本的差异，如下。</p>
+<ul>
+<li>二进制协议。HTTP/2 倾向于使用二进制协议来减少 HTTP/1.x 中的延迟。二进制协议更容易解析，而不具有像 HTTP/1.x 中那样对人的可读性。HTTP/2 中的数据块是帧和流。<br>帧和流：</li>
+</ul>
+<p>HTTP 消息是由一个或多个帧组成的。有一个叫做 HEADERS 的帧存放元数据，真正的数据是放在 DATA 帧中的，帧类型定义在the HTTP/2 specs（HTTP/2规范），如 HEADERS、DATA、<code>RST_STREAM</code>、SETTINGS、PRIORITY 等。每个 HTTP/2 请求和响应都被赋予一个唯一的流 ID 且放入了帧中。帧就是一块二进制数据。一系列帧的集合就称为流。每个帧都有一个流 id，用于标识它属于哪一个流，每一个帧都有相同的头。同时，除了流标识是唯一的，值得一提的是，客户端发起的任何请求都使用奇数和服务器的响应是偶数的流 id。除了 HEADERS 和 DATA， 另外一个值得说一说帧类型是 <code>RST_STREAM</code>，它是一个特殊的帧类型，用于中止流，如客户端发送这儿帧来告诉服务器我不再需要这个流了。在 HTTP/1.1 中只有一种方式来实现服务器停止发送响应给客户端，那就是关闭连接引起延迟增加，因为后续的请求就需要打开一个新的连接。 在 HTTP/2 中，客户端可以使用 RST_FRAME 来停止接收指定的流而不关闭连接且还可以在此连接中接收其它流。</p>
+<ul>
+<li>多路复用。由于 HTTP/2 现在是一个二进制协议，且是使用帧和流来实现请求和响应，一旦 TCP 连接打开了，所有的流都通过这一连接来进行异步的发送而不需要打开额外的连接。反过来，服务器的响应也是异步的方式，如响应是无序的、客户端使用流 id 来标识属于流的包。这就解决了存在于 HTTP/1.x 中 head-of-line 阻塞问题，如客户端将不必耗时等待请求，而其他请求将被处理。如下图所示。</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032112/Blog/http/http1%E5%92%8Chttp2%E7%9A%84%E7%AE%80%E5%8D%95%E6%AF%94%E8%BE%83.png" alt="http2.0 Multiplexing"></p>
+<ul>
+<li>HPACK 头部压缩。它是一个单独的用于明确优化发送 Header RFC 的一部分。它的本质是，当我们同一个客户端不断的访问服务器时，在 header 中发送很多冗余的数据，有时 cookie 就增大 header，且消耗带宽和增加了延迟。为了解决这个问题， HTTP/2 引入了头部压缩。与请求和响应不同，header 不是使用 gzip 或 compress 等压缩格式，它有不同的机制，它使用了霍夫曼编码和在客户端和服务器维护的头部表来消除重复的 headers（如 User Agent)，在后续的请求中就只使用头部表中引用。它与 HTTP/1.1 中的一样，不过增加了伪 header，如 :method、:scheme、:host 和:path。</li>
+<li>服务器推送。在服务器端，Server Push 是 HTTTP/2 的另外一个重要功能，我们知道，客户端是通过请求来获取资源的，它可以通过推送资源给客户端而不需客户端主动请求。例如，浏览器载入了一个页面，浏览器解析页面时发现了需要从服务器端载入的内容，接着它就发送一个请求来获取这些内容。Server Push允许服务器推送数据来减少客户端请求。它是如何实现的呢，服务器在一个新的流中发送一个特殊的帧 PUSH_PROMISE，来通知客户端：“嘿，我要把这个资源发给你!你就不要请求了。”</li>
+<li>请求优先级。客户端可以在一个打开的流中在流的 HEADERS 帧中放入优先级信息。在任何时间，客户端都可以发送一个 PRIORITY 的帧来改变流的优先级。如果没有优先级信息，服务器就会异步的处理请求，比如无序处理。如果流被赋予了优先级，它就会基于这个优先级来处理，由服务器决定需要多少资源来处理该请求。</li>
+<li>安全。大家对 HTTP/2 是否强制使用安全连接（通过 TLS）进行了充分的讨论。最后的决定是不强制使用。然而，大多数厂商表示，他们将只支持基于 TLS 的 HTTP/2。所以，尽管 HTTP/2 规范不需要加密，但它已经成为默认的强制执行的。在这种情况下，基于 TLS 实现的 HTTP/2 需要的 TLS 版本最低要求是1.2。 因此必须有最低限度的密钥长度、临时密钥等。</li>
+</ul>
+<p>当然 HTTP 协议也在不断地进化过程中，在 HTTP1.1 基础上便有了 HTTP 2.0。</p>
+<p>HTTP 1.1 在应用层以纯文本的形式进行通信。每次通信都要带完整的 HTTP 的头，而且不考虑 pipeline 模式的话，每次的过程总是像上面描述的那样一去一回。这样在实时性、并发性上都存在问题。</p>
+<p>为了解决这些问题，HTTP 2.0 会对 HTTP 的头进行一定的压缩，将原来每次都要携带的大量 key value 在两端建立一个索引表，对相同的头只发送索引表中的索引。</p>
+<p>另外，HTTP 2.0 协议将一个 TCP 的连接中，切分成多个流，每个流都有自己的 ID，而且流可以是客户端发往服务端，也可以是服务端发往客户端。它其实只是一个虚拟的通道。流是有优先级的。</p>
+<p>HTTP 2.0 还将所有的传输信息分割为更小的消息和帧，并对它们采用二进制格式编码。常见的帧有Header 帧，用于传输 Header 内容，并且会开启一个新的流。再就是Data 帧，用来传输正文实体。多个 Data 帧属于同一个流。</p>
+<p>通过这两种机制，HTTP 2.0 的客户端可以将多个请求分到不同的流中，然后将请求内容拆成帧，进行二进制传输。这些帧可以打散乱序发送， 然后根据每个帧首部的流标识符重新组装，并且可以根据优先级，决定优先处理哪个流的数据。</p>
+<p>我们来举一个例子。</p>
+<p>假设我们的一个页面要发送三个独立的请求，一个获取 css，一个获取 js，一个获取图片 jpg。如果使用 HTTP 1.1 就是串行的，但是如果使用 HTTP 2.0，就可以在一个连接里，客户端和服务端都可以同时发送多个请求或回应，而且不用按照顺序一对一对应。</p>
+<p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032289/Blog/http/Image_3.jpg" alt="img"></p>
+<p>HTTP 2.0 其实是将三个请求变成三个流，将数据分成帧，乱序发送到一个 TCP 连接中。</p>
+<p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032315/Blog/http/Image_4.jpg" alt="img"></p>
+<p>HTTP 2.0 成功解决了 HTTP 1.1 的队首阻塞问题，同时，也不需要通过 HTTP 1.x 的 pipeline 机制用多条 TCP 连接来实现并行请求与响应；减少了 TCP 连接数对服务器性能的影响，同时将页面的多个数据 css、js、 jpg 等通过一个数据链接进行传输，能够加快页面组件的传输速度。</p>
+<h4 id="HTTP-协议的具体内容"><a href="#HTTP-协议的具体内容" class="headerlink" title="HTTP 协议的具体内容"></a>HTTP 协议的具体内容</h4><p>而我们平时老生常谈的 HTTP 的协议大都是指的是 HTTP 1.1 协议的内容，接下去我们一起看一下 HTTP 1.1 协议的结构。如下图所示。 <img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032396/Blog/http/http%E5%8D%8F%E8%AE%AE%E7%BB%93%E6%9E%84.png" alt="enter image description here"></p>
+<p>接下来，我将通过四部分大概介绍一下 HTTP 协议的基本内容。</p>
+<p><strong>1.URL &amp; URI</strong></p>
+<p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032447/Blog/http/http_url.png" alt="enter image description here"></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schema://host[<span class="string">:port#</span>]/path/.../[<span class="string">;url-params</span>][<span class="symbol">?query-string</span>][<span class="string">#anchor</span>]</span><br></pre></td></tr></table></figure>
+<p>URL（Uniform Resource Locator）主要包括以下几部分。</p>
+<ul>
+<li>scheme：指定低层使用的协议，一般是 HTTP，如果强调安全的话可以是 HTTPS。</li>
+<li>host：HTTP 服务器的 IP 地址或者域名。</li>
+<li>port：HTTP 服务器的默认端口是80，这种情况下端口号可以省略。如果使用了别的端口，必须指明。</li>
+<li>path：访问资源的路径。</li>
+<li>url-params：URL 的参数。</li>
+<li>query-string：发送给 HTTP 服务器的数据。</li>
+<li>anchor：锚。</li>
+</ul>
+<p>URI，在 Java 的 Servlet 中指的是 resource path 部分。</p>
+<p><strong>2.请求方法 Method</strong></p>
+<p>主要包括以下几种请求方法。</p>
+<ul>
+<li>GET：向指定的资源发出“显示”请求。使用 GET 方法应该只用在读取数据，而不应当被用于产生“副作用”的操作中，例如在 Web Application 中。其中一个原因是 GET 可能会被网络蜘蛛等随意访问。</li>
+<li>POST：向指定资源提交数据，请求服务器进行处理（例如提交表单或者上传文件）。数据被包含在请求本文中。这个请求可能会创建新的资源或修改现有资源，或二者皆有。</li>
+<li>PUT：向指定资源位置上传其最新内容。</li>
+<li>DELETE：请求服务器删除 Request-URI 所标识的资源。</li>
+<li>OPTIONS：这个方法可使服务器传回该资源所支持的所有 HTTP 请求方法。用“*”来代替资源名称，向 Web 服务器发送 OPTIONS 请求，可以测试服务器功能是否正常运作。</li>
+<li>HEAD：与 GET 方法一样，都是向服务器发出指定资源的请求。只不过服务器将不传回资源的本文部分。它的好处在于，使用这个方法可以在不必传输全部内容的情况下，就可以获取其中“关于该资源的信息”（元信息或称元数据）。</li>
+<li>TRACE：回显服务器收到的请求，主要用于测试或诊断。</li>
+<li>CONNECT：HTTP/1.1 协议中预留给能够将连接改为渠道方式的代理服务器。通常用于 SSL 加密服务器的链接（经由非加密的 HTTP 代理服务器）。</li>
+</ul>
+<p>Method 名称是区分大小写的。当某个请求所针对的资源不支持对应的请求方法的时候，服务器应当返回状态码 405（Method Not Allowed），当服务器不认识或者不支持对应的请求方法的时候，应当返回状态码 501（Not Implemented）。</p>
+<p><strong>3.HTTP 之状态码</strong></p>
+<p>状态代码有三位数字组成，第一个数字定义了响应的类别，共分五种类别:</p>
+<ul>
+<li>1xx：指示信息–表示请求已接收，继续处理。</li>
+<li>2xx：成功–表示请求已被成功接收、理解、接受。</li>
+<li>3xx：重定向–要完成请求必须进行更进一步的操作。</li>
+<li>4xx：客户端错误–请求有语法错误或请求无法实现。</li>
+<li>5xx：服务器端错误–服务器未能实现合法的请求。</li>
+</ul>
+<p>常见状态码有：</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">200 </span>OK                        //客户端请求成功</span><br><span class="line"><span class="symbol">400 </span>Bad Request               //客户端请求有语法错误，不能被服务器所理解</span><br><span class="line"><span class="symbol">401 </span>Unauthorized              //请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 </span><br><span class="line"><span class="symbol">403 </span>Forbidden                 //服务器收到请求，但是拒绝提供服务</span><br><span class="line"><span class="symbol">404 </span><span class="keyword">Not</span> Found                 //请求资源不存在，eg：输入了错误的URL</span><br><span class="line"><span class="symbol">500 </span>Internal Server <span class="keyword">Error</span>     //服务器发生不可预期的错误</span><br><span class="line"><span class="symbol">503 </span>Server Unavailable        //服务器当前不能处理客户端的请求，一段时间后可能恢复正常</span><br></pre></td></tr></table></figure>
+<p><strong>4.请求体&amp;响应体</strong></p>
+<p>请求体&amp;响应体，这个没有特殊规定，需要配合不同的 Content-Type 来使用。</p>
+<p>唯一需要注意的是 multipart/form-data、application/x-www-from-urlencoded、raw、binary 的区别。</p>
+<p>（1）multipart/form-data</p>
+<p>它将表单的数据组织成 Key-Value 形式，用分隔符 boundary（boundary 可任意设置）处理成一条消息。由于有 boundary 隔离，所以当即上传文件，又有参数的时候，必须要用这种 content-type 类型。如下图所示。</p>
+<p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032481/Blog/http/http-form-data.png" alt="enter image description here"></p>
+<p>（2）x-www-form-urlencoded</p>
+<p>即 application/x-www-from-urlencoded，将表单内的数据转换为 Key-Value。这种和 Get 方法把参数放在 URL 后面一样的想过，这种不能文件上传。</p>
+<p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032587/Blog/http/http-form-data-2.png" alt="enter image description here"></p>
+<p>（3）raw</p>
+<p>可以上传任意格式的“文本”，可以上传 Text、JSON、XML、HTML 等。</p>
+<p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032651/Blog/http/http-form-data-raw.png" alt="enter image description here"></p>
+<p>（4）binary</p>
+<p>即 Content-Type:application/octet-stream，只可以上传二进制数据流，通常用来上传文件。由于没有键值，所以一次只能上传一个文件。</p>
+<p>（5）Header</p>
+<p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032707/Blog/http/http-header.png" alt="enter image description here"></p>
+<p>HTTP 消息的 Headers 共分为三种，分别是 General Headers、Entity Headers、Request/Response Headers。</p>
+<ul>
+<li>General Headers</li>
+</ul>
+<p>我把被 Request 和 Response 共享的 Headers 成为General Headers，具体有：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">general-header = Cache-Control           </span><br><span class="line">               |<span class="built_in"> Connection </span>      </span><br><span class="line">               | Date             </span><br><span class="line">               | Pragma           </span><br><span class="line">               | Trailer          </span><br><span class="line">               | Transfer-Encoding</span><br><span class="line">               |<span class="built_in"> Upgrade </span>         </span><br><span class="line">               | Via              </span><br><span class="line">               | Warning</span><br></pre></td></tr></table></figure>
+<p>其中，Cache-Control 指定请求和响应遵循的缓存机制；Connection 允许客户端和服务器指定与请求/响应连接有关的选项；Date 提供日期和时间标志，说明报文是什么时间创建的；Pragma 头域用来包含实现特定的指令，最常用的是 Pragma:no-cache；Trailer，如果报文采用了分块传输编码(chunked transfer encoding) 方式，就可以用这个首部列出位于报文拖挂（trailer）部分的首部集合；Transfer-Encoding 告知接收端为了保证报文的可靠传输，对报文采用了什么编码方式；Upgrade 给出了发送端可能想要“升级”使用的新版本和协议；Via 显示了报文经过的中间节点（代理，网嘎un）。</p>
+<ul>
+<li>Entity Headers</li>
+</ul>
+<p>Entity Headers 主要用来描述消息体（message body）的一些元信息，具体有：</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">entity-header  = Allow                   </span><br><span class="line">               | <span class="type">Content</span>-Encoding </span><br><span class="line">               | <span class="type">Content</span>-<span class="keyword">Language</span> </span><br><span class="line">               | <span class="type">Content</span>-Length   </span><br><span class="line">               | <span class="type">Content</span>-Location </span><br><span class="line">               | <span class="type">Content</span>-MD5      </span><br><span class="line">               | <span class="type">Content</span>-Range    </span><br><span class="line">               | <span class="type">Content</span>-<span class="keyword">Type</span>     </span><br><span class="line">               | <span class="type">Expires</span>          </span><br><span class="line">               | <span class="type">Last</span>-Modified</span><br></pre></td></tr></table></figure>
+<p>其中，以 Content 为前缀的 Headers 主要描述了消息体的结构、大小、编码等信息，Expires 描述了 Entity 的过期时间，Last-Modified 描述了消息的最后修改时间。</p>
+<ul>
+<li>Request/Response Headers</li>
+</ul>
+<p>Request-Line 是 Request 消息体的第一部分，其具体定义如下：</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Request-Line = Method SP URI SP HTTP-Version CRLF</span><br><span class="line">Method = <span class="string">"<span class="keyword">OPTIONS</span>"</span></span><br><span class="line">       | <span class="string">"<span class="keyword">HEAD</span>"</span>  </span><br><span class="line">       | <span class="string">"<span class="keyword">GET</span>"</span>  </span><br><span class="line">       | <span class="string">"<span class="keyword">POST</span>"</span>  </span><br><span class="line">       | <span class="string">"<span class="keyword">PUT</span>"</span>  </span><br><span class="line">       | <span class="string">"<span class="keyword">DELETE</span>"</span>  </span><br><span class="line">       | <span class="string">"<span class="keyword">TRACE</span>"</span></span><br></pre></td></tr></table></figure>
+<p>其中 SP 代表字段的分隔符，HTTP-Version 一般就是”http/1.1”，后面紧接着是一个换行。</p>
+<p>在 Request-Line 后面紧跟着的就是 Headers。我们在上面已经介绍了 General Headers 和 Entity Headers，下面便是 Request Headers的定义。</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">request-header = Accept                   </span><br><span class="line">               | <span class="type">Accept</span>-Charset    </span><br><span class="line">               | <span class="type">Accept</span>-Encoding   </span><br><span class="line">               | <span class="type">Accept</span>-<span class="keyword">Language</span>   </span><br><span class="line">               | <span class="type">Authorization</span>     </span><br><span class="line">               | <span class="type">Expect</span>            </span><br><span class="line">               | <span class="type">From</span>              </span><br><span class="line">               | <span class="type">Host</span>              </span><br><span class="line">               | <span class="type">If</span>-Match          </span><br><span class="line">               | <span class="type">If</span>-Modified-Since </span><br><span class="line">               | <span class="type">If</span>-None-Match     </span><br><span class="line">               | <span class="type">If</span>-Range          </span><br><span class="line">               | <span class="type">If</span>-Unmodified-Since</span><br><span class="line">               | <span class="type">Max</span>-Forwards       </span><br><span class="line">               | <span class="type">Proxy</span>-Authorization</span><br><span class="line">               | <span class="type">Range</span>              </span><br><span class="line">               | <span class="type">Referer</span>            </span><br><span class="line">               | <span class="type">TE</span>                 </span><br><span class="line">               | <span class="type">User</span>-Agent</span><br></pre></td></tr></table></figure>
+<p>Request Headers 扮演的角色其实就是一个 Request 消息的调节器。需要注意的是若一个 Headers 名称不在上面列表中，则默认当做 Entity Headers 的字段。前缀为 Accept 的 Headers 定义了客户端可以接受的媒介类型、语言和字符集等。From、Host、Referer 和 User-Agent 详细定义了客户端如何初始化 Request。前缀为 If 的 Headers 规定了服务器只能返回符合这些描述的资源，若不符合，则会返回 304 Not Modified。</p>
+<p>Request Body，若 Request-Line 中的 Method 为 GET，请求中不包含消息体，若为 POST，则会包含消息体。</p>
+<p>一个具体的 Request 消息实例，如下。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/articles/http-basics</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: www.articles.com</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Cache-Control</span>: no-cache</span><br><span class="line"><span class="attribute">Pragma</span>: no-cache</span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Response 消息体</li>
+</ul>
+<p>Response 消息格式和 Request 类似，也分为三部分，即 Response-Line、Response Headers、Response Body。</p>
+<p>Response-Line 具体定义如下：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Status</span>-Line = HTTP-Version <span class="built_in">SP</span> Status-<span class="meta">Code</span> <span class="built_in">SP</span> Reason-Phrase CRLF</span><br><span class="line"><span class="symbol">HTTP</span>-Version字段值一般为HTTP/<span class="number">1</span>.<span class="number">1</span></span><br><span class="line"><span class="symbol">Status</span>-<span class="meta">Code</span>前面已经讨论过了</span><br><span class="line"><span class="symbol">Reason</span>-Phrase 是对status <span class="meta">code</span>的具体描述</span><br></pre></td></tr></table></figure>
+<p>一个最常见的 Response 响应为:</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">200</span> OK</span><br></pre></td></tr></table></figure>
+<p>Response Headers的定义如下。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">response-header = Accept-Ranges</span><br><span class="line">                | Age</span><br><span class="line">                | ETag              </span><br><span class="line">                | Location          </span><br><span class="line">                | Proxy-Authenticate</span><br><span class="line">                | Retry-After       </span><br><span class="line">                |<span class="built_in"> Server </span>           </span><br><span class="line">                | Vary              </span><br><span class="line">                | WWW-Authenticate</span><br></pre></td></tr></table></figure>
+<p>其中，Age 表示消息自 server 生成到现在的时长，单位是秒；ETag 是对 Entity 进行 MD5 hash 运算的值，用来检测更改；Location 是被重定向的 URL；Server 表示服务器标识。</p>
+<h4 id="缓存机制-HTTP-缓存"><a href="#缓存机制-HTTP-缓存" class="headerlink" title="缓存机制 HTTP 缓存"></a>缓存机制 HTTP 缓存</h4><p><strong>1.如何缓存</strong></p>
+<p>降低网络上发送 HTTP 请求的次数，这里采用“过期”机制。</p>
+<p>HTTP 服务器通过两种实体头（Entity-Header）来实现“过期”机制：Expires 头和 Cache-Control 头的 max-age 子项。</p>
+<p>Expires/Cache-Control 控制浏览器是否直接从浏览器缓存取数据还是重新发请求到服务器取数据。只是 Cache-Control 比 Expires 可以控制的多一些，而且 Cache-Control 会重写 Expires 的规则。</p>
+<p>降低网络上完整回复 HTTP 请求包的次数，这里采用“确证”机制。</p>
+<p>HTTP服务器通过两种方式实现“确证”机制：ETag 以及 Last-Modified。</p>
+<p><strong>2.相关的 Header</strong></p>
+<p>主要包括以下几个。</p>
+<ul>
+<li>Cache-Control</li>
+</ul>
+<p>常用的值有：</p>
+<p>（1）max-age（单位为 s）指定设置缓存最大的有效时间，定义的是时间长短。当浏览器向服务器发送请求后，在 max-age 这段时间里浏览器就不会再向服务器发送请求了。 （2）s-maxage（单位为 s）同 max-age，只用于共享缓存（比如 CDN 缓存），也就是说 max-age 用于普通缓存，而 s-maxage 用于代理缓存。如果存在 s-maxage，则会覆盖掉 max-age 和 Expires header。 （3）public 指定响应会被缓存，并且在多用户间共享。如果没有指定 public 还是 private，则默认为 public。 （4）private 响应只作为私有的缓存，不能在用户间共享。如果要求 HTTP 认证，响应会自动设置为 private。 （5）no-cache 指定不缓存响应，表明资源不进行缓存，比如，设置了 no-cache 之后并不代表浏览器不缓存，而是在缓存前要向服务器确认资源是否被更改。因此有的时候只设置 no-cache 防止缓存还是不够保险，还可以加上 private 指令，将过期时间设为过去的时间。 （6）no-store 表示绝对禁止缓存。一看就知道，如果用了这个命令，当然就是不会进行缓存啦！每次请求资源都要从服务器重新获取。 （7）must-revalidate 指定如果页面是过期的，则去服务器进行获取。这个指令并不常用，就不做过多的讨论了。</p>
+<ul>
+<li>Expires</li>
+</ul>
+<p>缓存过期时间，用来指定资源到期的时间，是服务器端的具体时间点。也就是说，Expires=max-age + 请求时间，需要和 Last-modified 结合使用。但在上面我们提到过 cache-control 的优先级更高。Expires 是 Web 服务器响应消息头字段，在响应 HTTP 请求时告诉浏览器在过期时间前浏览器可以直接从浏览器缓存取数据，而无需再次请求。</p>
+<ul>
+<li>Last-modified</li>
+</ul>
+<p>服务器端文件的最后修改时间，需要和 cache-control 共同使用，是检查服务器端资源是否更新的一种方式。当浏览器再次进行请求时，会向服务器传送 If-Modified-Since 报头，询问 Last-Modified 时间点之后资源是否被修改过。如果没有修改，则返回码为304，使用缓存；如果修改过，则再次去服务器请求资源，返回码和首次请求相同为200，资源为服务器最新资源。</p>
+<ul>
+<li>Etag</li>
+</ul>
+<p>根据实体内容生成一段 hash 字符串，标识资源的状态，由服务端产生。浏览器会将这串字符串传回服务器，验证资源是否已经修改。</p>
+<p>为什么要使用 Etag 呢?Etag 主要为了解决 Last-Modified 无法解决的一些问题。</p>
+<p>一些文件也许会周期性的更改，但是它的内容并不改变（仅仅改变的修改时间），这个时候我们并不希望客户端认为这个文件被修改了，而重新 Get。</p>
+<p>某些文件修改非常频繁，比如在秒以下的时间内进行修改（比方说1s内修改了 N 次），If-Modified-Since 能检查到的粒度是 s 级的，这种修改无法判断（或者说 UNIX 记录 MTIME 只能精确到秒）。</p>
+<p>某些服务器不能精确的得到文件的最后修改时间。</p>
+<p>缓存过程如下图所示。<br><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032772/Blog/http/http-cache.png" alt="enter image description here"></p>
+<h4 id="Session-与-Cookie-必知必会"><a href="#Session-与-Cookie-必知必会" class="headerlink" title="Session 与 Cookie 必知必会"></a>Session 与 Cookie 必知必会</h4><p>很好的解决了 HTTP 通讯中状态问题，但其本身也存在一些问题，比如：</p>
+<ul>
+<li>客户端存储，可能会被修改或删除。</li>
+<li>发送请求时，Cookie 会被一起发送到服务器，当 Cookie 数据量较大时也会带来额外的请求数据量。</li>
+<li>客户端对 Cookie 数量及大小有一定的限制，Session 解决了 Cookie 的一些缺点。Session 同样是为了记录用户状态，对于每个用户来说都会有相应的一个状态值保存在服务器中，而只在客户端记录一个 sessionID 用于区分是哪个用户的 Session。</li>
+</ul>
+<p>与 Cookie 相比，Session有一定的优势，如：</p>
+<ul>
+<li>Session 值存储在服务器，相对来说更安全。</li>
+<li>客户端发送给服务器的只有一个 sessionID，数据量更小。Session同样需要在客户端存储一个 sessionID。可以这个值存储在 Cookie，每次发送请求时通过 Cookie 请求头将其发送到服务器；也可以不使用 Cookie，而将 sessionID 作为一个额外的请求参数，通过 URL 或请求体发送到服务器。</li>
+</ul>
+<p>基于 Cookie 实现 Session 的实现原理如下图的示。</p>
+<p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032829/Blog/http/http-cookie-session.png" alt="enter image description here"></p>
+<p>由上可见，基于 Cookie 实现 Session 时，其本质上还是在客户端保存一个 Cookie 值。这个值就是 sessionID，sessionID 的名称也可按需要设置，为保存安全，其值也可能会在服务器端做加密处理。服务器在收到 sessionID 后，就可以对其解密及查找对应的用户信息等。</p>
+<h4 id="HTTP-与-HTTPS-的区别"><a href="#HTTP-与-HTTPS-的区别" class="headerlink" title="HTTP 与 HTTPS 的区别"></a>HTTP 与 HTTPS 的区别</h4><p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032888/Blog/http/HTTP-vs-HTTPS.png" alt="img"></p>
+<p><strong>HTTP</strong>（HyperText Transfer Protocol：超文本传输协议）是一种用于分布式、协作式和超媒体信息系统的应用层协议。 简单来说就是一种发布和接收 HTML 页面的方法，被用于在 Web 浏览器和网站服务器之间传递信息。</p>
+<p>HTTP 默认工作在 TCP 协议 80 端口，用户访问网站 <strong>http://</strong> 打头的都是标准 HTTP 服务。</p>
+<p>HTTP 协议以明文方式发送内容，不提供任何方式的数据加密，如果攻击者截取了Web浏览器和网站服务器之间的传输报文，就可以直接读懂其中的信息，因此，HTTP协议不适合传输一些敏感信息，比如：信用卡号、密码等支付信息。</p>
+<p><strong>HTTPS</strong>（Hypertext Transfer Protocol Secure：超文本传输安全协议）是一种透过计算机网络进行安全通信的传输协议。HTTPS 经由 HTTP 进行通信，但利用 SSL/TLS 来加密数据包。HTTPS 开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。</p>
+<p>HTTPS 默认工作在 TCP 协议443端口，它的工作流程一般如以下方式：</p>
+<ul>
+<li>1、TCP 三次同步握手</li>
+<li>2、客户端验证服务器数字证书</li>
+<li>3、DH 算法协商对称加密算法的密钥、hash 算法的密钥</li>
+<li>4、SSL 安全加密隧道协商完成</li>
+<li>5、网页以加密的方式传输，用协商的对称加密算法和密钥加密，保证数据机密性；用协商的hash算法进行数据完整性保护，保证数据不被篡改。</li>
+</ul>
+<blockquote>
+<p>截至 2018 年 6 月，Alexa 排名前 100 万的网站中有 34.6% 使用 HTTPS 作为默认值，互联网 141387 个最受欢迎网站的 43.1% 具有安全实施的 HTTPS，以及 45% 的页面加载（透过Firefox纪录）使用HTTPS。2017 年3 月，中国注册域名总数的 0.11％使用 HTTPS。</p>
+<p>根据 Mozilla 统计，自 2017 年 1 月以来，超过一半的网站流量被加密。</p>
+</blockquote>
+<h4 id="HTTP-与-HTTPS-区别"><a href="#HTTP-与-HTTPS-区别" class="headerlink" title="HTTP 与 HTTPS 区别"></a>HTTP 与 HTTPS 区别</h4><ul>
+<li>HTTP 明文传输，数据都是未加密的，安全性较差，HTTPS（SSL+HTTP） 数据传输过程是加密的，安全性较好。</li>
+<li>使用 HTTPS 协议需要到 CA（Certificate Authority，数字证书认证机构） 申请证书，一般免费证书较少，因而需要一定费用。证书颁发机构如：Symantec、Comodo、GoDaddy 和 GlobalSign 等。</li>
+<li>HTTP 页面响应速度比 HTTPS 快，主要是因为 HTTP 使用 TCP 三次握手建立连接，客户端和服务器需要交换 3 个包，而 HTTPS除了 TCP 的三个包，还要加上 ssl 握手需要的 9 个包，所以一共是 12 个包。</li>
+<li>http 和 https 使用的是完全不同的连接方式，用的端口也不一样，前者是 80，后者是 443。</li>
+<li>HTTPS 其实就是建构在 SSL/TLS 之上的 HTTP 协议，所以，要比较 HTTPS 比 HTTP 要更耗费服务器资源。</li>
+</ul>
+<h4 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h4><p>在TCP/IP协议中，TCP协议通过三次握手建立一个可靠的连接</p>
+<p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556032942/Blog/http/tcp-three_times_hands.jpg" alt="img"></p>
+<ul>
+<li>第一次握手：客户端尝试连接服务器，向服务器发送 syn 包（同步序列编号Synchronize Sequence Numbers），syn=j，客户端进入 SYN_SEND 状态等待服务器确认</li>
+<li>第二次握手：服务器接收客户端syn包并确认（ack=j+1），同时向客户端发送一个 SYN包（syn=k），即 SYN+ACK 包，此时服务器进入 SYN_RECV 状态</li>
+<li>第三次握手：第三次握手：客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=k+1），此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手</li>
+</ul>
+<p>简化：</p>
+<p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556033005/Blog/http/http-tcp_2.png" alt="img"></p>
+<h4 id="HTTPS-的工作原理"><a href="#HTTPS-的工作原理" class="headerlink" title="HTTPS 的工作原理"></a>HTTPS 的工作原理</h4><p>我们都知道 HTTPS 能够加密信息，以免敏感信息被第三方获取，所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用 HTTPS 协议。</p>
+<p><img src="https://res.cloudinary.com/dvu6persj/image/upload/v1556033082/Blog/http/https.jpg" alt="img"></p>
+<p><strong>1、客户端发起 HTTPS 请求</strong></p>
+<p>这个没什么好说的，就是用户在浏览器里输入一个 https 网址，然后连接到 server 的 443 端口。</p>
+<p><strong>2、服务端的配置</strong></p>
+<p>采用 HTTPS 协议的服务器必须要有一套数字证书，可以自己制作，也可以向组织申请，区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面(startssl 就是个不错的选择，有 1 年的免费服务)。</p>
+<p>这套证书其实就是一对公钥和私钥，如果对公钥和私钥不太理解，可以想象成一把钥匙和一个锁头，只是全世界只有你一个人有这把钥匙，你可以把锁头给别人，别人可以用这个锁把重要的东西锁起来，然后发给你，因为只有你一个人有这把钥匙，所以只有你才能看到被这把锁锁起来的东西。</p>
+<p><strong>3、传送证书</strong></p>
+<p>这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等等。</p>
+<p><strong>4、客户端解析证书</strong></p>
+<p>这部分工作是有客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题。</p>
+<p>如果证书没有问题，那么就生成一个随机值，然后用证书对该随机值进行加密，就好像上面说的，把随机值用锁头锁起来，这样除非有钥匙，不然看不到被锁住的内容。</p>
+<p><strong>5、传送加密信息</strong></p>
+<p>这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了。</p>
+<p><strong>6、服务段解密信息</strong></p>
+<p>服务端用私钥解密后，得到了客户端传过来的随机值(私钥)，然后把内容通过该值进行对称加密，所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全。</p>
+<p><strong>7、传输加密后的信息</strong></p>
+<p>这部分信息是服务段用私钥加密后的信息，可以在客户端被还原。</p>
+<p><strong>8、客户端解密信息</strong></p>
+<p>客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容，整个过程第三方即使监听到了数据，也束手无策。</p>
+<hr>
+
+      
+    </div>
+
+
+<div>
+
+
+     
+
+
+
+     <div class="updated"><svg xmlns="http://www.w3.org/2000/svg" width="130" height="20">
+    <lineargradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/></lineargradient><clippath id="a">
+    <rect width="130" height="20" rx="3" fill="#fff"/></clippath><g clip-path="url(#a)">
+    <path fill="#555" d="M0 0h55v20H0z"/><path fill="#97CA00" d="M55 0h75v20H55z"/>
+    <path fill="url(#b)" d="M0 0h130v20H0z"/></g>
+ <g fill="#fff" text-anchor="middle" font-family="Menlo,monospace" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textlength="450" transform="scale(.1)">updated</text><text x="285" y="140" textlength="450" transform="scale(.1)">updated</text>
+ <text x="915" y="150" fill="#010101" fill-opacity=".3" textlength="650" transform="scale(.1)">
+
+  
+               2019-05-06
+              </text>
+ <text x="915" y="140" textlength="650" transform="scale(.1)"> 2019-05-06</text></g></svg></div>
+
+
+                 
+             
+              
+              
+            
+
+
+       
+<div>
+
+   
+   
+  
+
+<div class="post-body" style="opacity: 1; display: block;"><div><div style="text-align:center;font-size:13px;letter-spacing:10px;user-select:none;margin-top:20px;color:#bbb">本文结束啦<i class="fa fa-star"></i>感谢您阅读</div></div></div><div class="post-body" style="opacity: 1; display: block;">		
+	
+	
+	
+</div>
+
+     
+   </div>
+
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+         
+    <div style="color: rgba(0, 0, 0, 0.75); font-size:13px; letter-spacing:3px">(&gt;看完记得五星好评哦亲&lt;)</div>
+
+   
+	 <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Java/2019/04/24/ThreadPool/" rel="prev" title="ThreadPool">
+                <i class="fa fa-chevron-left"></i> ThreadPool
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Java/2019/04/14/hashMap-infiniteLoop/" rel="next" title="HashMap-Infiniteloop">
+                HashMap-Infiniteloop <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </div></article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+		<a href="/">
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="沉稳">
+            </a>
+		
+		
+              <p class="site-author-name" itemprop="name">沉稳</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/doslin" title="GitHub &rarr; https://github.com/doslin" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                链接在作弊
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://coldplay.com/" title="http://coldplay.com/" rel="noopener" target="_blank">Coldplay Official Website</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://elonmusknews.org/" title="https://elonmusknews.org/" rel="noopener" target="_blank">获取 Elon Musk 的新闻</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://res.cloudinary.com/dvu6persj/image/upload/v1554823311/%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88_%E6%A0%A1%E6%8B%9B_%E9%82%B1%E5%BF%97%E6%9E%97-15679977727.pdf" title="https://res.cloudinary.com/dvu6persj/image/upload/v1554823311/%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88_%E6%A0%A1%E6%8B%9B_%E9%82%B1%E5%BF%97%E6%9E%97-15679977727.pdf" rel="noopener" target="_blank">关于此博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          <div id="days"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("03/27/2019 15:13:14");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是-HTTP-协议"><span class="nav-number">1.</span> <span class="nav-text">什么是 HTTP 协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-协议的简单历史"><span class="nav-number">2.</span> <span class="nav-text">HTTP 协议的简单历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-协议的具体内容"><span class="nav-number">3.</span> <span class="nav-text">HTTP 协议的具体内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存机制-HTTP-缓存"><span class="nav-number">4.</span> <span class="nav-text">缓存机制 HTTP 缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Session-与-Cookie-必知必会"><span class="nav-number">5.</span> <span class="nav-text">Session 与 Cookie 必知必会</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-与-HTTPS-的区别"><span class="nav-number">6.</span> <span class="nav-text">HTTP 与 HTTPS 的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-与-HTTPS-区别"><span class="nav-number">7.</span> <span class="nav-text">HTTP 与 HTTPS 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-三次握手"><span class="nav-number">8.</span> <span class="nav-text">TCP 三次握手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTPS-的工作原理"><span class="nav-number">9.</span> <span class="nav-text">HTTPS 的工作原理</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沉稳</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">69k</span>
+  
+  
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="weixin-box">
+  <div class="weixin-menu">
+    <div class="weixin-hover">
+      <div class="weixin-description">微信扫一扫，订阅本博客</div>
+    </div>
+  </div>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'AWtUeM97t5zIKdppnTVfJMXm-gzGzoHsz',
+    appKey: 'KWfBrPC5uJJsh8tmVvq3Wvji',
+    placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！~',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+    <!-- LOCAL: You can save these files to your site and update links -->
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
+<!-- END LOCAL -->
+
+<script>
+  function renderGitment() {
+    var gitment = new Gitmint({
+      id: window.location.pathname,
+      owner: 'doslin',
+      repo: 'doslin.github.io',
+      
+        lang: '' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+      
+      oauth: {
+      
+      
+        client_secret: 'd85c0de18428623802b0cfca2195df855946bf2f',
+      
+        client_id: 'f05ccbf74732d0d2ade2'
+      }
+    });
+    gitment.render('gitment-container');
+  }
+
+  
+    renderGitment();
+  
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'AWtUeM97t5zIKdppnTVfJMXm-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'AWtUeM97t5zIKdppnTVfJMXm-gzGzoHsz',
+                'X-LC-Key': 'KWfBrPC5uJJsh8tmVvq3Wvji',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 17922,
+      el: 'wpac-rating',
+      color: 'f79533'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("AWtUeM97t5zIKdppnTVfJMXm-gzGzoHsz", "KWfBrPC5uJJsh8tmVvq3Wvji");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+  <script>
+  $("body").backstretch("https://res.cloudinary.com/dvu6persj/image/upload/v1554796120/background.jpg");
+  </script>
+
+</body>
+</html>
