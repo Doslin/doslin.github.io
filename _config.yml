@@ -11,7 +11,7 @@ image: /public/images/mountains.jpg
 color: '#dc322f'
 google_analytics: 
 baidu_analytics: 2209f3e596f3e0c61a293f49a2f65ba3
-disqus: blog-biezhi-me
+disqus: false
 
 markdown: kramdown
 highlighter: rouge
