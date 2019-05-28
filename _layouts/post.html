@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
 <article class="post">
   <h1 class="post-title">{{page.title}}</h1>
   <div class="post-date">
@@ -47,14 +47,13 @@ layout: default
 <!-- Add Disqus Comments -->
 {% if site.disqus %}
 <div id="comment"></div>
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
 <link rel="stylesheet" type="text/css" href="{{ '/public/css/iDisqus.min.css' }}">
 <script src="/public/js/iDisqus.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
     var disq = new iDisqus('comment', {
         forum: 'qiuzhilin',
-        api: 'http://107.175.24.242/',
+        api: 'https://dianfeng.xyz/',
         site: 'http://qiuzhilin.cn',
         mode: 1,
         timeout: 2000,
