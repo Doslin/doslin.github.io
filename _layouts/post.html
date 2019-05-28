@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+
 <article class="post">
   <h1 class="post-title">{{page.title}}</h1>
   <div class="post-date">
@@ -54,7 +54,8 @@ layout: default
     var disq = new iDisqus('comment', {
         forum: 'qiuzhilin',
         api: 'https://dianfeng.xyz/',
-        site: 'http://qiuzhilin.cn',
+        site: 'https://qiuzhilin.cn',
+        url: location.pathname,
         mode: 1,
         timeout: 2000,
         init: true,
