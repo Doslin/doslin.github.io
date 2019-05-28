@@ -46,5 +46,21 @@ layout: default
 
 <!-- Add Disqus Comments -->
 {% if site.disqus %}
-{% include disqus.html %}
+<div id="comment"></div>
+<link rel="stylesheet" type="text/css" href="{{ '/public/css/iDisqus.min.css' }}">
+<script src="/public/js/iDisqus.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    var disq = new iDisqus('comment', {
+        forum: 'qiuzhilin',
+        api: 'http://107.175.24.242/',
+        site: 'http://qiuzhilin.cn',
+        url: location.pathname,
+        mode: 1,
+        timeout: 2000,
+        init: true,
+      });
+    disq.count();
+  });
+</script>
 {% endif %}
