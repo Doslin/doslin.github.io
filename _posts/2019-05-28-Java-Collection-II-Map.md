@@ -12,12 +12,12 @@ last_modified_at: 2019-05-28T15:52:09-05:00
 
 本文介绍Java中的Map接口以及对应的实现类。[Java Collection系列第一篇](https://www.hytheory.com/java/Java-Collection-I-General-Framework/)整理了集合框架和Map的框架，下面两张图简单回顾一下。
 
-![CollectionModel](/images/20190507/CollectionModel.png){:	.align-center}
+![CollectionModel](/public/images/20190507/CollectionModel.png){:	.align-center}
 <center>Collection总体框架图</center>
 
 Java集合主要有List集合，Set集合，Map映射以及工具类（Arrays，Collections，Iterator），上图是继承Collection接口的类。Map是唯一一个不继承或实现Collection的集合，框架图如下。
 
-![MapModel](/images/20190507/MapModel.png){:	.align-center}
+![MapModel](/public/images/20190507/MapModel.png){:	.align-center}
 <center>Map总体框架图</center>
 
 
@@ -28,7 +28,7 @@ Java集合主要有List集合，Set集合，Map映射以及工具类（Arrays，
 
 Map是专为快速查找而设计的数据结构。数据在Map中以键值对的方式存储，每组键值对称为一个entry，并且不允许插入重复的键。
 
-![Key-value](/images/20190528/map.png){:	.align-center}
+![Key-value](/public/images/20190528/map.png){:	.align-center}
 
 Map的实现包含TreeMap、HashMap、WeakHashMap、HashTable和LinkedHashMap，最常用的是HashMap，以下大多数的代码使用HashMap作为例子。JDK1.8中的HashMap的哈希桶采用链表和红黑树互相转化的实现，也就是当链表大小超过一定阈值的时候，会自动转化为一颗红黑树，默认阈值为`TREEIFY_THRESHOLD=8`。
 
