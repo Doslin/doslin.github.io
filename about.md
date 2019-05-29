@@ -20,6 +20,10 @@ order: 5
 
 - 一切都不值得留下
 
+**My Github chart:**
+
+![Mogeko's Github chart](http://ghchart.rshah.org/mogeko)
+
 ## 版权说明
 
 我坚信着开放、自由和乐于分享是推动计算机技术发展的动力之一。所以本站所有内容均采用[署名 4.0 国际（CC BY
