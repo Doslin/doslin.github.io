@@ -2,8 +2,6 @@
 layout: post
 title: 'Singly Linked List'
 author: Marty Pang
-categories: 
-  - Algorithm
 tags: 
   - LeetCode
   - Linked List

@@ -110,7 +110,9 @@ public class Solution {
 
 本题要求返回两个链表交集的初始节点，如下图所示：
 
-![intersection](/images/20190311/intersection.png){: .align-center}
+![intersection](/public/images/20190311/intersection.png){: .align-center}
+
+![intersection]({{ "/public/images/20190311/intersection.png" | prepend: site.cdnurl }})
 
 本题需要我们找到在两个链表遍历过程中，第一个相同的节点。考虑一种特殊情况，如果两个链表长度一致，那么使用`pA`与`pB`两个指针一次一步分别遍历两个链表，同时比较`pA`与`pB`，注意不是比较value。若循环走到链表末尾，表示`A`、`B`没有交集，返回`null`。再推广到一般情况，假设我们在第一趟遍历得到`A`、`B`链表的长度`lenA`与`lenB`，在第二趟遍历开始之前，更长的链表先走`abs(lenA-lenB)`步，这样我们就获得两个相同长度的链表，再重复特殊情况即可。代码如下：
 
