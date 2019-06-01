@@ -2,7 +2,7 @@
 Docco style used in http://jashkenas.github.com/docco/ converted by Simon Madine (@thingsinjars)
 */
 
-.hljs {
+.highlight {
     display: block;
     overflow-x: auto;
     padding: 0.5em;
@@ -10,88 +10,88 @@ Docco style used in http://jashkenas.github.com/docco/ converted by Simon Madine
     background: #e6e6e6;
 }
 
-.hljs-comment,
-.hljs-quote {
+.highlight-comment,
+.highlight-quote {
     color: #408080;
     font-style: italic;
 }
 
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-literal,
-.hljs-subst {
+.highlight-keyword,
+.highlight-selector-tag,
+.highlight-literal,
+.highlight-subst {
     color: #954121;
 }
 
-.hljs-number {
+.highlight-number {
     color: #40a070;
 }
 
-.hljs-string,
-.hljs-doctag {
+.highlight-string,
+.highlight-doctag {
     color: #219161;
 }
 
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-section,
-.hljs-type {
+.highlight-selector-id,
+.highlight-selector-class,
+.highlight-section,
+.highlight-type {
     color: #19469d;
 }
 
-.hljs-params {
+.highlight-params {
     color: #00f;
 }
 
-.hljs-title {
+.highlight-title {
     color: #458;
     font-weight: bold;
 }
 
-.hljs-tag,
-.hljs-name,
-.hljs-attribute {
+.highlight-tag,
+.highlight-name,
+.highlight-attribute {
     color: #000080;
     font-weight: normal;
 }
 
-.hljs-variable,
-.hljs-template-variable {
+.highlight-variable,
+.highlight-template-variable {
     color: #008080;
 }
 
-.hljs-regexp,
-.hljs-link {
+.highlight-regexp,
+.highlight-link {
     color: #b68;
 }
 
-.hljs-symbol,
-.hljs-bullet {
+.highlight-symbol,
+.highlight-bullet {
     color: #990073;
 }
 
-.hljs-built_in,
-.hljs-builtin-name {
+.highlight-built_in,
+.highlight-builtin-name {
     color: #0086b3;
 }
 
-.hljs-meta {
+.highlight-meta {
     color: #999;
     font-weight: bold;
 }
 
-.hljs-deletion {
+.highlight-deletion {
     background: #fdd;
 }
 
-.hljs-addition {
+.highlight-addition {
     background: #dfd;
 }
 
-.hljs-emphasis {
+.highlight-emphasis {
     font-style: italic;
 }
 
-.hljs-strong {
+.highlight-strong {
     font-weight: bold;
 }

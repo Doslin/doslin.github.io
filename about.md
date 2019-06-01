@@ -7,10 +7,10 @@ order: 5
 ---
 
 {% if site.author.photo %}
-![{{ site.author.name }}]({{ site.author.photo | prepend: site.cdnurl }}){:.me}
+![{{ site.author.name }}]( /public/images/avatar.jpeg){:.me}
 {% endif %}
 
-目前还没什么其他可说的，如果想看我的代码可以去我的 [Github](https://github.com/doslin){:target="_blank"}，想看我的视频教程可以去 [Youtube](https://www.youtube.com/channel/UClYx3HnKZ93pcZVlhhoNn1Q?view_as=subscriber){:target="_blank"} 频道。
+目前还没什么其他可说的，如果想看我的代码可以去我的 [Github](https://github.com/doslin){:target="_blank"}
 
 ## 编程理念
 
