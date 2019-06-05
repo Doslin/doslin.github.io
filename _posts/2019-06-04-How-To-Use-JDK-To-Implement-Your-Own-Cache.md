@@ -15,7 +15,7 @@ last_modified_at: 2019-06-04T13:46:12-05:00
 
 ### 面试官：你是如何使用JDK来实现自己的缓存（支持高并发）？
 
-![img](https://mmbiz.qpic.cn/mmbiz_png/iaIdQfEric9Txvmm5ZUBXRkDVSibSjHLBJYo6DSsy7ZYa7VAibpYXDQycqfNRNCuQuticJtIoRJuOPaAsC4k9ibsKRfQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+![img](https://res.cloudinary.com/dvu6persj/image/upload/v1559741258/Blog/640.png)
 
 转载自：https://dwz.cn/HGarfiB9 作者：浅醉樱花雨
 
