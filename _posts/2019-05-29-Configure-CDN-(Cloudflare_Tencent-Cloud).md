@@ -2,12 +2,12 @@
 layout: post
 title: '为博客添加 CDN (Cloudflare，腾讯云)'
 description: "CDN 就是部署在世界各地的缓存服务器"
-author: Marty Pang
+author: qiuzhilin
 image: 
   path: /images/20181225/ssi-cover.jpg
   thumbnail: /images/20181225/ssi-cover.jpg
 categories: 
-  - Database
+  - CDN
 tags: 
   - CDN
   - Snapshot Isolation
