@@ -32,7 +32,15 @@ socials:
   - title: Github
     icon: github
     url: https://github.com/doslin
-
+  - title: Twitter
+    icon: twitter
+    url: https://twitter.com/doslin
+  - title: Youtube
+    icon: youtube
+    url: https://www.youtube.com/channel/doslin
+  - title: Telegram Group
+    icon: telegram
+    url: https://telegram.me/doslin
 
 # 友链
 links:

@@ -18,7 +18,7 @@
 <div id="_backdrop"></div>
 <a id="_menu" href="#_sidebar">☰</a>
 
-<aside id="_sidebar" class="sidebar" {% if image %}style="background-image:url(/public/images/links.jpeg)" {%
+<aside id="_sidebar" class="sidebar" {% if image %}style="background-image:url('{{ image | prepend: site.cdnurl}}')"{%
   endif %}>
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -29,7 +29,11 @@
       </h1>
       {{site.description | markdownify}}
     </div>
-
+<!--   <div class="search" id="js-search">
+            <input type="text" placeholder="(sitemap)~$ type to search" class="search__input form-control" id="js-search__input">
+            <ul class="search__results" id="js-search__results"></ul>
+  <script type="text/javascript" src="/public/js/super-search.js"></script>
+  </div> -->
     <nav class="sidebar-nav">
       <a class="sidebar-nav-item{% if page.url == '/' %} active{% endif %}" href="{{site.baseurl}}/">主页</a>
       {% comment %}
