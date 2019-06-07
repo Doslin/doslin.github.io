@@ -5,7 +5,7 @@ author: Marty Pang
 categories: 
   - Algorithm
 tags: 
-  - Swap
+  - Data Structure
 last_modified_at: 2019-04-22T13:57:31-05:00
 ---
 

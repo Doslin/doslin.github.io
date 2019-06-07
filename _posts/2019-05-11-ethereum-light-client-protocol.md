@@ -5,7 +5,6 @@ author: Marty Pang
 categories: 
   - Blockchain
 tags: 
-  - Ethereum
   - Light Client
 last_modified_at: 2019-05-11T15:12:55-05:00
 ---

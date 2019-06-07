@@ -21,6 +21,8 @@ highlighter: rouge
 paginate: 12
 paginate_path: "/page/:num"
 
+sidebar: true
+
 # 作者信息
 author:
   name: qiuzhilin

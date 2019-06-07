@@ -6,7 +6,6 @@ categories:
   - Algorithm
 tags: 
   - LeetCode
-  - Divide and Conquer
 last_modified_at: 2019-03-08T10:35:19-05:00
 ---
 

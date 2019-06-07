@@ -5,8 +5,7 @@ author: Marty Pang
 categories: 
   - Java
 tags: 
-  - Collection
-  - Map
+  - JDK
 last_modified_at: 2019-05-28T15:52:09-05:00
 ---
 

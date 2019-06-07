@@ -5,8 +5,7 @@ author: Marty Pang
 categories: 
   - Data Structure
 tags: 
-  - Stack
-  - Queue
+  - Data Structure
 last_modified_at: 2019-04-28T10:59:28-05:00
 ---
 

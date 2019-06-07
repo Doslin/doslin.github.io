@@ -6,7 +6,6 @@ categories:
   - Algorithm
 tags: 
   - LeetCode
-  - Tree
 last_modified_at: 2019-03-20T14:29:27-05:00
 ---
 树是一种基本的常见数据结构。与链表，队列，栈等线性结构不同，树的存储方式不再是线性。树由n个节点组成，每个节点有若干个孩子。

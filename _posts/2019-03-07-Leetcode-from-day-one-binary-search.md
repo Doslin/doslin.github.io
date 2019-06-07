@@ -6,7 +6,6 @@ categories:
   - Algorithm
 tags: 
   - LeetCode
-  - Binary Search
 last_modified_at: 2019-04-24T14:40:38-05:00
 ---
 

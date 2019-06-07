@@ -6,7 +6,6 @@ categories:
   - Algorithm
 tags: 
   - LeetCode
-  - Two Pointers
 last_modified_at: 2019-05-06T15:20:31-05:00
 
 ---

@@ -5,7 +5,7 @@ author: Marty Pang
 categories: 
   - Algorithm
 tags: 
-  - Sort
+  - Data Structure
 last_modified_at: 2019-04-12T14:00:33-05:00
 ---
 
@@ -136,7 +136,7 @@ void merge(int[] a, int start, int mid, int end) {
 }
 ```
 
-一颗包含n个节点的完全二叉树深度为$\log{n}​$，又一趟归并需要扫描所有元素，故时间复杂度为$O(n\log{n})​$。由于归并排序过程中需要新生成与原数组相同大小的数组以及递归深度为$\log{n}​$的栈空间，故归并排序的空间复杂度为$O(n+\log{n})​$。可以看出，归并排序效率较高，但是比较耗费内存空间。
+一颗包含n个节点的完全二叉树深度为$\log{n}$，又一趟归并需要扫描所有元素，故时间复杂度为$O(n\log{n})$。由于归并排序过程中需要新生成与原数组相同大小的数组以及递归深度为$\log{n}$的栈空间，故归并排序的空间复杂度为$O(n+\log{n})$。可以看出，归并排序效率较高，但是比较耗费内存空间。
 
 ## Quick Sort
 
@@ -173,7 +173,7 @@ void quick_sort(int[] a, int start, int end) {
 }
 ```
 
-我们可以使用`randompartition`来代替原始的使用第一个元素作为pivot的`partition`来降低快排的时间复杂度。快速排序在最差情况下的时间复杂度为$O(n^2)​$，平均情况与最好情况都是$O(n\log{n})​$。另外，快排消除了归并排序中的辅助数组的空间开销$n​$，所以其空间复杂度为递归栈空间的深度，即$O(\log{n})​$。
+我们可以使用`randompartition`来代替原始的使用第一个元素作为pivot的`partition`来降低快排的时间复杂度。快速排序在最差情况下的时间复杂度为$O(n^2)$，平均情况与最好情况都是$O(n\log{n})$。另外，快排消除了归并排序中的辅助数组的空间开销$n$，所以其空间复杂度为递归栈空间的深度，即$O(\log{n})$。
 
 ## Heap Sort
 
@@ -227,7 +227,7 @@ void heapify(int[] a, int i, int size) {
 - MSD，从最高有效数字开始，通常适用于排序字符串，使用词典排序；
 - LSD，从最低位数字开始，通常用于整数排序；
 
-以LSD为例，对数组$10,21,17,34,44,11,654,123$应用低位优先的基数排序。首先根据个位数得到$1\underline{0},2\underline{1},1\underline{1},12\underline{3},3\underline{4},4\underline{4},65\underline{4},1\underline{7}$。接着按照十位数，我们有$\underline{1}0,\underline{1}1,\underline{1}7,\underline{2}1,1\underline{2}3,\underline{3}4,\underline{4}4,6\underline{5}4$。最后根据百位数，不足百位的补0，$\underline{0}10,\underline{0}11,\underline{0}17,\underline{0}21,\underline{0}34,\underline{0}44,\underline{1}23,\underline{6}54​$。这样就得到最后排序的结果。
+以LSD为例，对数组$10,21,17,34,44,11,654,123$应用低位优先的基数排序。首先根据个位数得到$1\underline{0},2\underline{1},1\underline{1},12\underline{3},3\underline{4},4\underline{4},65\underline{4},1\underline{7}$。接着按照十位数，我们有$\underline{1}0,\underline{1}1,\underline{1}7,\underline{2}1,1\underline{2}3,\underline{3}4,\underline{4}4,6\underline{5}4$。最后根据百位数，不足百位的补0，$\underline{0}10,\underline{0}11,\underline{0}17,\underline{0}21,\underline{0}34,\underline{0}44,\underline{1}23,\underline{6}54$。这样就得到最后排序的结果。
 
 ```java
 void count_sort(int[] a, int mul) {

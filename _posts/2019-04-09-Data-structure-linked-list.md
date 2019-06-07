@@ -4,7 +4,6 @@ title: 'Singly Linked List'
 author: Marty Pang
 tags: 
   - LeetCode
-  - Linked List
 last_modified_at: 2019-04-09T10:33:37-05:00
 ---
 
