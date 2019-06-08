@@ -4,10 +4,12 @@ title: 关于
 permalink: about.html
 image: /public/images/redflag.jpg
 order: 5
+typora-copy-images-to: ./public/images/avatar.jpg
 ---
 
 {% if site.author.photo %}
 ![{{ site.author.name }}]( /public/images/avatar.jpeg){:.me}
+
 {% endif %}
 
 目前还没什么其他可说的，如果想看我的代码可以去我的 [Github](https://github.com/doslin){:target="_blank"}

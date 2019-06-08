@@ -1,6 +1,6 @@
 title: 编程和诗歌
 url: https://qiuzhilin.cn
-favicon: /public/images/favicon-32x32-next.png
+#favicon: /public/images/favicon-32x32-next.png
 baseurl: ''
 cdnurl: 'https://blog-biezhi-me-1251171175.cos.ap-shanghai.myqcloud.com'
   #'https://blog-biezhi-me-1251171175.cos.ap-shanghai.myqcloud.com'
@@ -28,7 +28,7 @@ sidebar: true
 author:
   name: qiuzhilin
   email: zhizhiqiu@163.com
-  #photo: public/images/avatar.jpeg
+  photo: public/images/avatar.jpeg
 
 # 社交信息
 socials:
