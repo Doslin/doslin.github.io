@@ -1,17 +1,12 @@
-﻿---
+---
 title: ThreadPool
-tags: [JDK]
-date: 2019-04-24 22:29:44
+tags: JDK
+date: 2019-06-08 22:29:44
 permalink: ThreadPool
-categories: Java
 description: 聊一聊被问倒的线程池
-image: https://res.cloudinary.com/dvu6persj/image/upload/v1556116453/Blog/JDK/ThreadPool/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E7%B1%BB%E5%9B%BE.webp
 ---
 <p class="description"></p>
 
-<img src="https://" alt="" style="width:100%" />
-
-<!-- more -->
 ### 首先说说为什么用线程池？
 
 创建并开启一个线程开销很大。
