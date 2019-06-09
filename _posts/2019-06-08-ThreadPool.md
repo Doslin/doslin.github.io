@@ -1,8 +1,8 @@
 ---
-title: ThreadPool
+layout: post
+title: 'ThreadPool'
 tags: JDK
-date: 2019-06-08 22:29:44
-permalink: ThreadPool
+last_modified_at: 2019-06-08 T13:46:12-05:00
 description: 聊一聊被问倒的线程池
 ---
 <p class="description"></p>
