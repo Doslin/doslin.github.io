@@ -6,7 +6,6 @@ categories:
   - Algorithm
 tags: 
   - LeetCode
-  - Tree
 last_modified_at: 2019-05-27T18:56:21-05:00
 ---
 

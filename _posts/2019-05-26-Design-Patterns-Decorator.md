@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Design-Patterns-Decorator
+title: '装饰器模式'
 tags: [Design-Patterns]
 date: 2019-04-28 23:26:15
 ---
