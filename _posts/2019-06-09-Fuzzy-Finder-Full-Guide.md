@@ -4,7 +4,7 @@ title: 'Fuzzy finder(fzf+vim) 使用全指南'
 description: "Fuzzy finder(fzf+vim) 使用全指南"
 author: qiuzhilin
 tags: 
-  - tools
+  - Tools
 last_modified_at: 2019-06-09T13:46:18-05:00
 ---
 
