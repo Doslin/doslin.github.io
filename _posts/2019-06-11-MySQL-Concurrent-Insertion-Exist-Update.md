@@ -8,8 +8,6 @@ tags:
 last_modified_at: 2019-06-11T13:46:19-05:00
 ---
 
-# Mysql 并发插入、存在不插入，存在更新操作
-
 我们遇到挺多这样的问题，当用户并发提交数据，重复提交数据。导致数据重复，或者 报错。
 
 几种解决办法，对应到几种业务场景。
@@ -21,7 +19,11 @@ last_modified_at: 2019-06-11T13:46:19-05:00
 
 
 ```sql
-Entity entity = service.findById(10);if(null == entity){    service.insert(obj);}else{    service.update(obj);}
+Entity entity = service.findById(10);
+	if(null == entity){  
+		service.insert(obj);			}
+		else			{    
+			service.update(obj);}
 ```
 
 先根据条件查询，存在就更新，不存在添加，但是往往我们是集群、多列的状态下，会再你正在判断`null == entity`的时候，另外一个线程已经插入完毕了，导致你以为是不存在，重复插入。
@@ -63,7 +65,10 @@ REPLACE INTO demo_in(a,b,c)  VALUES(123, 2, 4);
 
 
 ```sql
-INSERT INTO demo_in(a,b,c) SELECT 123, 2, 4 FROM DUAL WHERE NOT EXISTS(SELECT c FROM demo_in WHERE c = 4);
+INSERT INTO demo_in(a,b,c) SELECT 123, 2, 4 
+FROM DUAL 
+WHERE NOT 
+EXISTS(SELECT c FROM demo_in WHERE c = 4);
 ```
 
 用临时表`DUAL`来标记数据，然后插入到`demo_in`表中。条件是`c=4`，并且`not exists`，也就是当`c=4`条件满足，则不插入。
