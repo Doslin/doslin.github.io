@@ -161,8 +161,18 @@ SELECT ... WHERE TO_DAYS(CURRENT_DAT) - TO_DAYS(date_col) <= 10;
 注意事项
 
 - 索引不是越多越好，过多的索引不但会降低写效率，而且会降低读的效率
+
 - 定期维护索引碎片
+
 - 在SQL语句中不要使用强制索引关键字
+
+  ```Sql
+  FORCE INDEX
+  
+  SELECT * FROM TABLE FORCE INDEX (FIELD1)
+  ```
+
+  
 
 ## 3. 事务
 
