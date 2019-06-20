@@ -8,8 +8,6 @@ tags:
 last_modified_at: 2019-06-10T13:46:18-05:00
 ---
 
-# [教程]安装Python3，防止和Python2.7冲突
-
 yum是基于Python2.X的，安装Python3，防止和Python2.7冲突
 
 ## 1.下载python3安装包并解压
