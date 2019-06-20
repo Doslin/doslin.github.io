@@ -193,7 +193,7 @@ B+Tree在B-Tree的基础上有两点变化：
 数据节点之间是有指针指向的
 由于B+Tree的非叶子节点只存储键值信息，假设每个磁盘块能存储4个键值及指针信息，则变成B+Tree后其结构如下图所示：
 
-<img src="https://res.cloudinary.com/dvu6persj/image/upload/v1561015917/Blog/MySQL/3271561015795_.pic.jpg" width="50%" height="50%"  />
+<img src="https://res.cloudinary.com/dvu6persj/image/upload/v1561015917/Blog/MySQL/3271561015795_.pic.jpg" width="100%" height="100%"  />
 
 
 
