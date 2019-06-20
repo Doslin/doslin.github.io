@@ -193,7 +193,9 @@ B+Tree在B-Tree的基础上有两点变化：
 数据节点之间是有指针指向的
 由于B+Tree的非叶子节点只存储键值信息，假设每个磁盘块能存储4个键值及指针信息，则变成B+Tree后其结构如下图所示：
 
-![3271561015795_.pic](https://res.cloudinary.com/dvu6persj/image/upload/v1561015917/Blog/MySQL/3271561015795_.pic.jpg)
+<img src="https://res.cloudinary.com/dvu6persj/image/upload/v1561015917/Blog/MySQL/3271561015795_.pic.jpg" width="50%" height="50%"  />
+
+
 
 通常在B+Tree上有两个头指针，一个指向根节点，另一个指向关键字最小的叶子节点，而且所有叶子节点（即数据节点）之间是一种链式环结构。因此可以对B+Tree进行两种查找运算：一种是对于主键的范围查找和分页查找，另一种是从根节点开始，进行随机查找。
 
@@ -201,9 +203,9 @@ B+Tree在B-Tree的基础上有两点变化：
 
 Myisam引擎也是采用的B+Tree结构来作为索引结构。
 
-由于Myisam中的索引和数据分别存放在不同的文件，所以在索引树中的叶子节点中存的数据是该索引对应的数据记录的地址，由于数据与索引不在一起，所以Myisam是非聚簇索引。![3261561015774_.pic](https://res.cloudinary.com/dvu6persj/image/upload/v1561015920/Blog/MySQL/3261561015774_.pic.jpg)
+由于Myisam中的索引和数据分别存放在不同的文件，所以在索引树中的叶子节点中存的数据是该索引对应的数据记录的地址，由于数据与索引不在一起，所以Myisam是非聚簇索引。
 
-
+<img src="https://res.cloudinary.com/dvu6persj/image/upload/v1561015920/Blog/MySQL/3261561015774_.pic.jpg" width="50%" height="50%"  />
 
 9. InnoDB中的B+Tree
 
@@ -213,7 +215,7 @@ InnoDB是以ID为索引的数据存储。
 
 InnoDB通过B+Tree结构对ID建索引，然后在叶子节点中存储记录。
 
-![3241561010369_.pic](https://res.cloudinary.com/dvu6persj/image/upload/v1561015933/Blog/MySQL/3241561010369_.pic.png)
+<img src="https://res.cloudinary.com/dvu6persj/image/upload/v1561015933/Blog/MySQL/3241561010369_.pic.png" width="50%" height="50%"  />
 
 若建索引的字段不是主键ID，则对该字段建索引，然后在叶子节点中存储的是该记录的主键，然后通过主键索引找到对应的记录。
 
