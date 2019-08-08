@@ -1,0 +1,71 @@
+title: 编程和诗歌
+url: https://qiuzhilin.cn
+#favicon: /public/images/favicon-32x32-next.png
+baseurl: ''
+cdnurl: 'https://blog-biezhi-me-1251171175.cos.ap-shanghai.myqcloud.com'
+  #'https://blog-biezhi-me-1251171175.cos.ap-shanghai.myqcloud.com'
+description: 
+  格物致知·我的套路。
+
+permalink: /:year/:month/:title.html
+
+
+image: /public/images/mountains.jpg
+color: '#dc322f'
+google_analytics: 
+
+baidu_analytics: 2209f3e596f3e0c61a293f49a2f65ba3
+disqus: qiuzhilin-cn
+
+markdown: kramdown
+highlighter: rouge
+paginate: 12
+paginate_path: "/page/:num"
+
+sidebar: true
+
+# 作者信息
+author:
+  name: qiuzhilin
+  email: zhizhiqiu@163.com
+  photo: public/images/avatar.jpeg
+
+# 社交信息
+socials:
+  - title: Github
+    icon: github
+    url: https://github.com/doslin
+  - title: Twitter
+    icon: twitter
+    url: https://twitter.com/doslin
+  - title: Youtube
+    icon: youtube
+    url: https://www.youtube.com/channel/doslin
+  - title: Telegram Group
+    icon: telegram
+    url: https://telegram.me/doslin
+
+# 友链
+links:
+
+
+
+
+# html 压缩
+compress_html:
+  clippings: all
+  comments: ["<!--", "-->"]
+  endings: all
+  startings: [html, head, body]
+
+# sass 解析
+sass:
+  sass_dir: public/css
+  style: compressed
+
+# 插件
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap

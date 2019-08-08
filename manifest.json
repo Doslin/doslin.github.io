@@ -1,0 +1,22 @@
+{
+    "short_name": "脚踏实地",
+    "name": "邱志林的技术博客",
+    "icons": [{
+            "src": "https://qiuzhilin.cn/public/images/icons/launcher-icon-128x128.png",
+            "type": "image/png",
+            "sizes": "128x128"
+        },
+        {
+            "src": "https://qiuzhilin.cn/public/images/icons/launcher-icon-152x152.png",
+            "type": "image/png",
+            "sizes": "152x152"
+        },
+        {
+            "src": "https://qiuzhilin.cn/public/images/icons/launcher-icon-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
+    "start_url": "/?utm_source=homescreen",
+    "display": "standalone"
+}
