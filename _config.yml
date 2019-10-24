@@ -33,7 +33,7 @@ author:
 # 社交信息
 socials:
   - title: Github
-    icon: github
+    icon: github-logo
     url: https://github.com/doslin
   - title: Twitter
     icon: twitter
